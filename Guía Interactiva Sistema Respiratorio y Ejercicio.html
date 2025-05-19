@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Sistema Respiratorio y Ejercicio</title>
+    <meta name="description" content="Guía interactiva detallada sobre las respuestas y adaptaciones del sistema respiratorio al ejercicio.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-respiratorio-blue': '#005A9C', // Azul de la guía Respiratorio (ULagos/Corporativo)
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-respiratorio-blue: #005A9C; /* Azul de la guía Respiratorio */
+            --askesis-green: #008037; /* Verde de la guía Respiratorio */
+            --askesis-orange: #F58220; /* Naranja de la guía Respiratorio */
+            --askesis-purple: #6f42c1; /* Morado de la guía Respiratorio */
+            --askesis-red: #dc3545; /* Rojo de la guía Respiratorio */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-respiratorio-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-respiratorio-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-respiratorio-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-respiratorio-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+        .slide-content-wrapper .formula { 
+            font-family: 'Times New Roman', Times, serif; font-style: italic; font-weight: bold; color: var(--askesis-purple); background-color: var(--askesis-accent-purple-light); padding: 5px 10px; border-radius: 4px; display: inline-block; margin: 5px 0;
+        }
+
+        /* Cajas de información específicas de esta guía Respiratorio */
+        .slide-content-wrapper .intro-box-respiratorio {
+             border-left: 4px solid var(--askesis-respiratorio-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-respiratorio strong { color: var(--askesis-respiratorio-blue); }
+        
+        .slide-content-wrapper .key-concept-box {
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+        
+        .slide-content-wrapper .response-adaptation-list ul { list-style: none; padding-left: 0; }
+        .slide-content-wrapper .response-adaptation-list li {
+             border-bottom: 1px dashed var(--askesis-border-light); padding-bottom: 1rem; margin-bottom: 1rem;
+        }
+         .slide-content-wrapper .response-adaptation-list li:last-child { border-bottom: none;}
+        .slide-content-wrapper .response-adaptation-list strong.term-title { 
+             display: block;
+             color: var(--askesis-green); 
+             font-size: 1.15em; 
+             font-weight: 700;
+             font-family: 'Roboto', sans-serif;
+             margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .response-adaptation-list .response::before { content: "⚡ Aguda: "; font-weight: bold; color: var(--askesis-orange); }
+        .slide-content-wrapper .response-adaptation-list .adaptation::before { content: "⏳ Crónica: "; font-weight: bold; color: var(--askesis-respiratorio-blue); }
+
+
+        .slide-content-wrapper .info-box-respiratorio { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-respiratorio.blue { background-color: var(--askesis-accent-blue-light); border-left-color: var(--askesis-respiratorio-blue); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-respiratorio.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-respiratorio.orange { background-color: var(--askesis-accent-orange-light); border-left-color: var(--askesis-orange); color: var(--askesis-text-dark);}
+        
+        .slide-content-wrapper .info-box-respiratorio strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-respiratorio.blue strong.box-title { color: var(--askesis-respiratorio-blue); }
+        .slide-content-wrapper .info-box-respiratorio.green strong.box-title { color: var(--askesis-green); }
+        .slide-content-wrapper .info-box-respiratorio.orange strong.box-title { color: var(--askesis-orange); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-respiratorio-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-respiratorio { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-respiratorio .nav-link-respiratorio { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; 
+            margin: 0 0.05rem; 
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; 
+            white-space: nowrap;
+        }
+        #main-nav-respiratorio .nav-link-respiratorio:hover,
+        #main-nav-respiratorio .nav-link-respiratorio.active {
+            background-color: var(--askesis-respiratorio-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-respiratorio { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-respiratorio { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-green), var(--askesis-respiratorio-blue));
+        }
+        #navigation-buttons-respiratorio button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-respiratorio button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-respiratorio-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-respiratorio-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-respiratorio {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-respiratorio-blue);
+        }
+        .slide-content-wrapper .glossary-box-respiratorio .guide-section-title { 
+             color: var(--askesis-respiratorio-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-respiratorio dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-respiratorio dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-respiratorio dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-respiratorio" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-respiratorio-0" class="nav-link-respiratorio">Intro</a></li>
+            <li><a href="#slide-respiratorio-1" class="nav-link-respiratorio">Anatomía 1</a></li>
+            <li><a href="#slide-respiratorio-2" class="nav-link-respiratorio">Anatomía 2</a></li>
+            <li><a href="#slide-respiratorio-3" class="nav-link-respiratorio">Funciones</a></li>
+            <li><a href="#slide-respiratorio-4" class="nav-link-respiratorio">Intercambio Gases 1</a></li>
+            <li><a href="#slide-respiratorio-5" class="nav-link-respiratorio">Intercambio Gases 2</a></li>
+            <li><a href="#slide-respiratorio-6" class="nav-link-respiratorio">Respuestas Agudas 1</a></li>
+            <li><a href="#slide-respiratorio-7" class="nav-link-respiratorio">Respuestas Agudas 2</a></li>
+            <li><a href="#slide-respiratorio-8" class="nav-link-respiratorio">¿Limita Rendimiento?</a></li>
+            <li><a href="#slide-respiratorio-9" class="nav-link-respiratorio">Control Ventilación</a></li>
+            <li><a href="#slide-respiratorio-10" class="nav-link-respiratorio">Aplicación TDU</a></li>
+            <li><a href="#slide-respiratorio-11" class="nav-link-respiratorio">Glosario 1</a></li>
+            <li><a href="#slide-respiratorio-12" class="nav-link-respiratorio">Glosario 2</a></li>
+            <li><a href="#slide-respiratorio-13" class="nav-link-respiratorio">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-respiratorio"> <div id="progress-bar-container-respiratorio" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-respiratorio" class="text-center mb-1 text-sm font-semibold text-askesis-respiratorio-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-respiratorio" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-respiratorio"> <section id="slide-respiratorio-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/3768593/pexels-photo-3768593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-lungs"></i>Sistema Respiratorio y Ejercicio</h1>
+                    <p class="guide-subtitle">El Intercambio Vital de Gases</p>
+                    <div class="intro-box-respiratorio">
+                        <p>Hemos visto cómo el sistema cardiovascular transporta oxígeno (O₂) y nutrientes. Pero, ¿de dónde viene ese oxígeno y cómo eliminamos el dióxido de carbono (CO₂), un subproducto del metabolismo energético? La respuesta está en el <strong>Sistema Respiratorio</strong>.</p>
+                    </div>
+                    <div class="intro-box-respiratorio">
+                        <p>Este sistema es el encargado del <strong>intercambio de gases</strong> entre el aire que respiramos y nuestra sangre. Durante el ejercicio, su actividad aumenta drásticamente para satisfacer las demandas metabólicas elevadas de los músculos. Comprender su funcionamiento es vital para el Técnico Deportivo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/724994/pexels-photo-724994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-draw-polygon"></i>Componentes Clave: Anatomía (Parte 1)</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Vías Respiratorias Superiores e Inferiores:</strong> Nariz, faringe, laringe, tráquea, bronquios y bronquiolos. Conducen, filtran, calientan y humidifican el aire.</li>
+                        <li><strong>Pulmones:</strong> Órganos principales donde ocurre el intercambio gaseoso.</li>
+                        <li><strong>Alvéolos:</strong> Pequeños sacos de aire (~300-500 millones) al final de los bronquiolos, rodeados por capilares. ¡Aquí ocurre el intercambio!</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-user-cog"></i>Componentes Clave: Músculos Respiratorios</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Diafragma:</strong> Principal músculo de la inspiración (inhalación) en reposo.</li>
+                        <li><strong>Músculos Intercostales Externos:</strong> Ayudan a la inspiración elevando costillas.</li>
+                        <li><strong>Músculos Accesorios de la Inspiración:</strong> (Ej. escalenos, esternocleidomastoideo) Se activan en ejercicio intenso.</li>
+                        <li><strong>Músculos de la Espiración (Exhalación):</strong>
+                            <ul>
+                                <li>Reposo: Pasiva (relajación).</li>
+                                <li>Ejercicio: Activa (intercostales internos, abdominales) para expulsar aire rápido.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tasks"></i>Funciones Esenciales del Sistema Respiratorio</h2>
+                    <p>Más allá de "respirar", este sistema cumple roles vitales:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li><strong>Intercambio Gaseoso:</strong> Captar O₂ del aire a la sangre y eliminar CO₂ de la sangre a los alvéolos.</li>
+                        <li><strong>Regulación del Equilibrio Ácido-Base:</strong> Al eliminar CO₂, ayuda a mantener el pH sanguíneo.</li>
+                        <li><strong>Vocalización:</strong> Paso del aire por cuerdas vocales.</li>
+                        <li><strong>Protección:</strong> Filtra y elimina partículas extrañas.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-exchange-alt"></i>Intercambio de Gases: El Proceso de Difusión</h2>
+                    <p>El movimiento de O₂ y CO₂ entre alvéolos y sangre, y entre sangre y tejidos, ocurre por <strong>difusión</strong>.</p>
+                    <div class="key-concept-box mt-4">
+                        <strong>Difusión</strong>
+                        <p>Movimiento pasivo de moléculas desde un área de <strong>mayor concentración (o presión parcial)</strong> a un área de <strong>menor concentración (o presión parcial)</strong>. No requiere energía (ATP).</p>
+                    </div>
+                    <p class="mt-3">La dirección del movimiento depende de las diferencias en <strong>presiones parciales</strong> (P<sub>O₂</sub>, P<sub>CO₂</sub>).</p>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/5473280/pexels-photo-5473280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-sync"></i>Intercambio en Pulmones y Tejidos</h2>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>En los Pulmones (Respiración Externa):</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li>P<sub>O₂</sub> alta en alvéolos, baja en sangre venosa → O₂ de alvéolos a sangre.</li>
+                                <li>P<sub>CO₂</sub> alta en sangre venosa, baja en alvéolos → CO₂ de sangre a alvéolos.</li>
+                            </ul>
+                        </li>
+                        <li><strong>En los Tejidos (Respiración Interna):</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                 <li>P<sub>O₂</sub> alta en sangre arterial, baja en células musculares → O₂ de sangre a células.</li>
+                                 <li>P<sub>CO₂</sub> alta en células, baja en sangre arterial → CO₂ de células a sangre.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                     <div class="info-box-respiratorio blue mt-4">
+                         <strong class="box-title"><i class="fas fa-truck"></i> Transporte de Gases en la Sangre</strong>
+                         <p>El O₂ se transporta principalmente unido a la <strong>hemoglobina</strong> (glóbulos rojos). El CO₂ se transporta disuelto, unido a hemoglobina, y mayormente como <strong>iones bicarbonato (HCO₃⁻)</strong> en plasma (clave para equilibrio ácido-base).</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/949194/pexels-photo-949194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tachometer-alt"></i>Respuestas Agudas al Ejercicio (Parte 1)</h2>
+                    <p class="mb-3">El sistema respiratorio se ajusta inmediatamente al ejercicio:</p>
+                    <div class="response-adaptation-list">
+                        <ul>
+                            <li>
+                                <strong class="term-title">Ventilación Pulmonar (V<sub>E</sub>)</strong>
+                                <p class="response">Aumenta drásticamente. Aire movido/minuto (<span class="formula">V<sub>E</sub> = FR x VC</span>). De ~6 L/min a >100-200 L/min.</p>
+                                <p class="adaptation">Mejora eficiencia ventilatoria y resistencia muscular respiratoria.</p>
+                            </li>
+                            <li>
+                                <strong class="term-title">Frecuencia Respiratoria (FR)</strong>
+                                <p class="response">Aumenta (de ~12-15 a 40-60+ resp/min).</p>
+                                <p class="adaptation">Puede disminuir en reposo y a cargas submáximas.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-wind"></i>Respuestas Agudas al Ejercicio (Parte 2)</h2>
+                    <div class="response-adaptation-list">
+                        <ul>
+                            <li>
+                                <strong class="term-title">Volumen Corriente (VC)</strong>
+                                <p class="response">Aumenta profundidad de respiración (de ~0.5 L a 2-3+ L).</p>
+                                <p class="adaptation">Puede aumentar ligeramente.</p>
+                            </li>
+                            <li>
+                                <strong class="term-title">Intercambio Gaseoso</strong>
+                                <p class="response">Aumenta difusión de O₂ y CO₂.</p>
+                                <p class="adaptation">Mejora capacidad muscular de extraer O₂ (difusión pulmonar raramente limita en sanos a nivel del mar).</p>
+                            </li>
+                            <li>
+                                <strong class="term-title">Relación Ventilación/Perfusión (V/Q)</strong>
+                                <p class="response">Mejora concordancia entre ventilación alveolar y perfusión capilar pulmonar.</p>
+                                <p class="adaptation">Puede mejorar ligeramente.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/703014/pexels-photo-703014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <h2 class="guide-section-title"><i class="fas fa-question"></i>¿Limita el Sistema Respiratorio el Rendimiento?</h2>
+                     <div class="info-box-respiratorio orange mt-4">
+                         <strong class="box-title"><i class="fas fa-tachometer-alt mr-2"></i>Consideraciones Importantes</strong>
+                         <p>En la mayoría de las personas sanas a nivel del mar, el sistema respiratorio <strong>no suele ser el principal factor limitante</strong> del rendimiento aeróbico máximo (VO₂máx).</p>
+                         <p>Generalmente, la capacidad del sistema cardiovascular para transportar oxígeno y la capacidad de los músculos para utilizarlo son más limitantes.</p>
+                         <p>Sin embargo, en atletas de élite con sistemas cardiovasculares y musculares altamente desarrollados, o en condiciones especiales (como gran altitud o en personas con enfermedades pulmonares), la capacidad ventilatoria o la difusión pulmonar sí pueden convertirse en un factor limitante para el VO₂máx.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3912944/pexels-photo-3912944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-head-side-cough"></i>Regulando la Respiración: Control Ventilatorio</h2>
+                    <p class="mb-3">La ventilación está regulada por el centro respiratorio (tronco encefálico) vía:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Control Neural:</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li><strong>Comando Central:</strong> Señales de la corteza motora anticipan necesidad.</li>
+                                <li><strong>Aferencias Musculares:</strong> Receptores en músculos/articulaciones detectan movimiento/cambios.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Control Químico (Humoral):</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li><strong>Quimiorreceptores Centrales:</strong> Sensibles a P<sub>CO₂</sub> y pH en líquido cefalorraquídeo. ↑P<sub>CO₂</sub>/H<sup>+</sup> estimula ventilación.</li>
+                                <li><strong>Quimiorreceptores Periféricos:</strong> Sensibles a P<sub>O₂</sub> arterial, P<sub>CO₂</sub> y H<sup>+</sup>. ↓P<sub>O₂</sub> (hipoxia) estimula ventilación.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="mt-3">Durante el ejercicio, la P<sub>CO₂</sub> arterial suele ser el regulador más importante.</p>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-user-graduate"></i>Implicaciones para el Técnico Deportivo</h2>
+                    <p>Entender el sistema respiratorio te ayuda a:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li>Comprender la relación Cardio-Respiratoria.</li>
+                        <li>Interpretar la respuesta ventilatoria y su relación con umbrales metabólicos.</li>
+                        <li>Valorar la importancia del calentamiento y enfriamiento.</li>
+                        <li>Considerar factores ambientales (altitud, contaminación).</li>
+                        <li>Valorar la respiración diafragmática y enseñar técnicas de respiración.</li>
+                        <li>Identificar posibles limitaciones o síntomas respiratorios inusuales.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/159579/crayons-coloring-book-coloring-book-cc0-159579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-respiratorio">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Respiratorio (Parte 1)</h2>
+                        <dl>
+                            <dt>Sistema Respiratorio</dt>
+                            <dd>Órganos para intercambio de gases.</dd>
+                            <dt>Alvéolos</dt>
+                            <dd>Sacos de aire en pulmones para intercambio O₂/CO₂.</dd>
+                            <dt>Diafragma</dt>
+                            <dd>Principal músculo inspiratorio.</dd>
+                            <dt>Ventilación Pulmonar (V<sub>E</sub>)</dt>
+                            <dd>Aire movido/min (V<sub>E</sub> = FR x VC).</dd>
+                            <dt>Frecuencia Respiratoria (FR)</dt>
+                            <dd>Respiraciones/min.</dd>
+                            <dt>Volumen Corriente (VC)</dt>
+                            <dd>Aire por respiración normal.</dd>
+                            <dt>Difusión</dt>
+                            <dd>Movimiento pasivo de gases (mayor a menor presión parcial).</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-12" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-respiratorio">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Respiratorio (Parte 2)</h2>
+                        <dl>
+                            <dt>Presión Parcial (P<sub>x</sub>)</dt>
+                            <dd>Presión de un gas individual en una mezcla.</dd>
+                            <dt>Hemoglobina</dt>
+                            <dd>Proteína en glóbulos rojos que transporta O₂.</dd>
+                            <dt>Equilibrio Ácido-Base</dt>
+                            <dd>Mantenimiento del pH sanguíneo.</dd>
+                            <dt>Comando Central</dt>
+                            <dd>Señales cerebrales que influyen en regulación respiratoria.</dd>
+                            <dt>Quimiorreceptores</dt>
+                            <dd>Sensores de cambios químicos (P<sub>O₂</sub>, P<sub>CO₂</sub>, pH).</dd>
+                            <dt>Hipoxia</dt>
+                            <dd>Baja concentración de oxígeno en tejidos.</dd>
+                            <dt>Umbral Ventilatorio</dt>
+                            <dd>Punto donde V<sub>E</sub> aumenta desproporcionadamente al VO₂, asociado a ↑lactato.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-respiratorio-13" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1153370/pexels-photo-1153370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-wind"></i>Conclusión: El Soplo Vital del Movimiento</h2>
+                    <div class="info-box-respiratorio green mt-6">
+                         <strong class="box-title"><i class="fas fa-graduation-cap"></i> Para Recordar</strong>
+                         <p>El sistema respiratorio es nuestro vínculo esencial con el oxígeno del ambiente y la vía para eliminar el CO₂. Su capacidad para ajustarse rápidamente a las demandas del ejercicio es fundamental para sostener la actividad física.</p>
+                         <p class="font-semibold mt-3">Comprender su funcionamiento y su interacción con el sistema cardiovascular te proporciona una visión más completa de la increíble máquina que es el cuerpo humano en movimiento.</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-respiratorio" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-respiratorio" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-respiratorio" class="w-full sm:w-auto bg-askesis-respiratorio-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-respiratorio" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Sistema Respiratorio y Ejercicio!
+            </div>
+            <p class="mb-6">Este conocimiento es clave para entender cómo el cuerpo se adapta al esfuerzo físico. ¡Excelente trabajo!</p>
+            <button id="restart-button-respiratorio" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía Respiratoria
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Respiratorio" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20Respiratoria." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterRespiratorio"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía RESPIRATORIO ***
+            const guideIdPrefix = 'respiratorio'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
