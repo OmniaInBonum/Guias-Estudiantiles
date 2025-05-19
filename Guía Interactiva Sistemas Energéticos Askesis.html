@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Sistemas Energéticos en el Ejercicio</title>
+    <meta name="description" content="Guía interactiva detallada sobre los Sistemas Energéticos (Fosfágenos, Glucolítico, Oxidativo), su interacción y aplicación práctica en el ejercicio.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-sistemas-blue': '#005A9C', // Azul de la guía Sistemas (ULagos/Corporativo)
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                        'askesis-feedback-bg': '#fffadf',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-sistemas-blue: #005A9C; /* Azul de la guía Sistemas */
+            --askesis-green: #008037; /* Verde de la guía Sistemas */
+            --askesis-orange: #F58220; /* Naranja de la guía Sistemas */
+            --askesis-purple: #6f42c1; /* Morado de la guía Sistemas */
+            --askesis-red: #dc3545; /* Rojo de la guía Sistemas */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+            --askesis-feedback-bg: #fffadf; /* No usado en esta guía directamente, pero mantenido por consistencia */
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-sistemas-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-sistemas-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-sistemas-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-sistemas-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+
+        /* Cajas de información específicas de esta guía Sistemas Energéticos */
+        .slide-content-wrapper .intro-box-sistemas {
+             border-left: 4px solid var(--askesis-sistemas-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-sistemas strong { color: var(--askesis-sistemas-blue); }
+        
+        .slide-content-wrapper .key-concept-box { /* Reutilizado de ATP, pero con colores de esta guía si es necesario */
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+
+        .slide-content-wrapper .system-summary-box { 
+            border: 1px solid var(--askesis-border-light);
+            border-left: 5px solid var(--askesis-orange); 
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            background-color: var(--askesis-bg-content-wrapper); /* Fondo blanco para destacar */
+        }
+        .slide-content-wrapper .system-summary-box .guide-subsubsection-title { /* H4 dentro de system-summary */
+             margin-top: 0; 
+             color: var(--askesis-orange);
+             font-size: 1.3em; /* Ajuste de H4 */
+             border-bottom: 1px solid var(--askesis-orange);
+             padding-bottom: 0.3rem;
+             margin-bottom: 1rem;
+        }
+        .slide-content-wrapper .system-summary-box ul { list-style: none; padding-left: 0; }
+        .slide-content-wrapper .system-summary-box li { padding-left: 20px; position: relative; }
+        .slide-content-wrapper .system-summary-box li::before { 
+            content: "\f105"; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--askesis-orange);
+        }
+        
+        .slide-content-wrapper .interaction-diagram-box { 
+            text-align: center; padding: 20px; background-color: var(--askesis-accent-green-light); border: 1px dashed var(--askesis-green); border-radius: 8px; margin: 1.5rem 0;
+        }
+        .slide-content-wrapper .interaction-diagram-box img { max-width: 100%; height: auto; border-radius: 5px; }
+        .slide-content-wrapper .interaction-diagram-box p { font-size: 0.9em; color: var(--askesis-text-body); margin-top: 10px; }
+
+        .slide-content-wrapper .info-box-sistemas { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-sistemas.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-sistemas.orange { background-color: var(--askesis-accent-orange-light); border-left-color: var(--askesis-orange); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-sistemas.purple { background-color: var(--askesis-accent-purple-light); border-left-color: var(--askesis-purple); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-sistemas strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-sistemas.green strong.box-title { color: var(--askesis-green); }
+        .slide-content-wrapper .info-box-sistemas.orange strong.box-title { color: var(--askesis-orange); }
+        .slide-content-wrapper .info-box-sistemas.purple strong.box-title { color: var(--askesis-purple); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-sistemas-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-sistemas { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-sistemas .nav-link-sistemas { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; /* Aún más ajustado para muchos ítems */
+            margin: 0 0.05rem; /* Menos margen */
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; /* Muy pequeño para muchos ítems */
+            white-space: nowrap;
+        }
+        #main-nav-sistemas .nav-link-sistemas:hover,
+        #main-nav-sistemas .nav-link-sistemas.active {
+            background-color: var(--askesis-sistemas-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-sistemas { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-sistemas { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-green), var(--askesis-sistemas-blue));
+        }
+        #navigation-buttons-sistemas button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-sistemas button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-sistemas-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-sistemas-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-sistemas {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-sistemas-blue);
+        }
+        .slide-content-wrapper .glossary-box-sistemas .guide-section-title { 
+             color: var(--askesis-sistemas-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-sistemas dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-sistemas dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-sistemas dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-sistemas" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-sistemas-0" class="nav-link-sistemas">Intro</a></li>
+            <li><a href="#slide-sistemas-1" class="nav-link-sistemas">Recordatorio ATP</a></li>
+            <li><a href="#slide-sistemas-2" class="nav-link-sistemas">S. Fosfágenos</a></li>
+            <li><a href="#slide-sistemas-3" class="nav-link-sistemas">Info Fosfágenos</a></li>
+            <li><a href="#slide-sistemas-4" class="nav-link-sistemas">S. Glucolítico</a></li>
+            <li><a href="#slide-sistemas-5" class="nav-link-sistemas">Info Glucolítico</a></li>
+            <li><a href="#slide-sistemas-6" class="nav-link-sistemas">S. Oxidativo 1</a></li>
+            <li><a href="#slide-sistemas-7" class="nav-link-sistemas">S. Oxidativo 2</a></li>
+            <li><a href="#slide-sistemas-8" class="nav-link-sistemas">Info Oxidativo</a></li>
+            <li><a href="#slide-sistemas-9" class="nav-link-sistemas">Interacción</a></li>
+            <li><a href="#slide-sistemas-10" class="nav-link-sistemas">Aplicación TDU</a></li>
+            <li><a href="#slide-sistemas-11" class="nav-link-sistemas">Glosario 1</a></li>
+            <li><a href="#slide-sistemas-12" class="nav-link-sistemas">Glosario 2</a></li>
+            <li><a href="#slide-sistemas-13" class="nav-link-sistemas">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-sistemas"> <div id="progress-bar-container-sistemas" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-sistemas" class="text-center mb-1 text-sm font-semibold text-askesis-sistemas-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-sistemas" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-sistemas"> <section id="slide-sistemas-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/270085/pexels-photo-270085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-cogs"></i>Sistemas Energéticos en el Ejercicio</h1>
+                    <p class="guide-subtitle">Las Tres "Fábricas" que Resintetizan ATP</p>
+                    <div class="intro-box-sistemas">
+                        <p>En la guía anterior descubrimos que el <strong>ATP</strong> es la moneda energética esencial, pero que sus reservas son muy limitadas (¡solo duran segundos!). Entonces, ¿cómo podemos hacer ejercicio por más tiempo? La respuesta está en los <strong>Sistemas Energéticos</strong>: las vías metabólicas que nuestro cuerpo utiliza para <strong>resintetizar ATP continuamente</strong> a partir de otros combustibles.</p>
+                    </div>
+                    <div class="intro-box-sistemas">
+                        <p>Como Técnicos Deportivos, entender cómo funcionan estas "fábricas" de energía, cuándo predomina cada una y cómo se relacionan, es <strong>crucial para diseñar entrenamientos</strong> que desarrollen las capacidades específicas requeridas para cada deporte o actividad física.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/4327030/pexels-photo-4327030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-exclamation-circle"></i>Recordatorio: ¿Por Qué Resintetizar ATP?</h2>
+                     <div class="key-concept-box">
+                        <strong>Ciclo ATP-ADP Esencial</strong>
+                        <p>El ATP se rompe (hidroliza) a ADP + Pi para liberar energía (ej. contracción muscular). Los sistemas energéticos usan la energía de los combustibles (PCr, glucosa, grasa) para volver a unir el Pi al ADP, reformando ATP (fosforilación/resíntesis).</p>
+                    </div>
+                    <p class="mt-4">Dado que el almacenamiento de ATP es mínimo, la velocidad a la que podemos resintetizarlo determina directamente la <strong class="highlight">intensidad y duración</strong> del ejercicio que podemos sostener.</p>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-fighter-jet"></i>Sistema 1: El Explosivo - Fosfágenos (ATP-PCr)</h2>
+                    <p>Este es el sistema <strong>más rápido</strong> para producir ATP, ideal para esfuerzos máximos y de muy corta duración.</p>
+                    <div class="system-summary-box mt-4">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-bolt"></i>Características del Sistema de Fosfágenos</h4>
+                        <ul>
+                            <li><strong>Combustible Principal:</strong> Fosfocreatina (PCr o CP), almacenada en el músculo.</li>
+                            <li><strong>Reacción Clave:</strong> <code>PCr + ADP --(CK)--> Cr + ATP</code> (Enzima: Creatina Quinasa).</li>
+                            <li><strong>Velocidad de Resíntesis de ATP:</strong> <span style="color: var(--askesis-red); font-weight: bold;">Muy Alta</span> (casi instantánea).</li>
+                            <li><strong>Capacidad (Duración):</strong> <span style="color: var(--askesis-red); font-weight: bold;">Muy Baja</span> (~5-15 segundos de esfuerzo máximo).</li>
+                            <li><strong>¿Necesita Oxígeno?</strong> No (Anaeróbico).</li>
+                            <li><strong>Subproductos:</strong> Creatina (Cr). No produce lactato.</li>
+                            <li><strong>Predomina en:</strong> Sprints de 100m, levantamientos olímpicos, saltos, lanzamientos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-info-circle"></i>Más Sobre el Sistema de Fosfágenos</h2>
+                     <div class="info-box-sistemas orange mt-4">
+                         <strong class="box-title"><i class="fas fa-pills mr-2"></i>El Rol de la Creatina (Suplemento)</strong>
+                         <p>La suplementación con monohidrato de creatina es una estrategia nutricional común y bien investigada. Su objetivo principal es aumentar las reservas intramusculares de Fosfocreatina (PCr).</p>
+                         <p>Al tener mayores depósitos de PCr, teóricamente se podría:</p>
+                         <ul>
+                             <li>Mantener la producción de ATP vía este sistema por un periodo ligeramente más prolongado durante esfuerzos máximos repetidos.</li>
+                             <li>Acelerar la resíntesis de PCr durante los periodos de recuperación entre series cortas e intensas.</li>
+                         </ul>
+                         <p>Esto puede traducirse en mejoras en la fuerza, potencia y rendimiento en actividades que dependen predominantemente del sistema de fosfágenos.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/4752861/pexels-photo-4752861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-running"></i>Sistema 2: El Rápido - Glucolítico (Anaeróbico)</h2>
+                    <p>Cuando el esfuerzo intenso continúa más allá de unos segundos, el sistema glucolítico toma el relevo como principal proveedor rápido de ATP.</p>
+                    <div class="system-summary-box mt-4">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-fire"></i>Características del Sistema Glucolítico</h4>
+                        <ul>
+                            <li><strong>Combustible Principal:</strong> Glucosa (de la sangre) o Glucógeno (almacenado en músculo e hígado).</li>
+                            <li><strong>Proceso Clave:</strong> La <strong>Glucólisis</strong> descompone glucosa (6C) en dos moléculas de <strong>Piruvato</strong> (3C), produciendo 2 ATP netos (o 3 ATP si parte de glucógeno).</li>
+                            <li><strong>Velocidad de Resíntesis de ATP:</strong> <span style="color: var(--askesis-orange); font-weight: bold;">Alta</span> (más lenta que fosfágenos, más rápida que oxidativo).</li>
+                            <li><strong>Capacidad (Duración):</strong> <span style="color: var(--askesis-orange); font-weight: bold;">Limitada</span> (~15 segundos hasta 2-3 minutos de esfuerzo intenso).</li>
+                            <li><strong>¿Necesita Oxígeno?</strong> No (Anaeróbico).</li>
+                            <li><strong>Subproductos Clave:</strong> Piruvato. Si la intensidad es alta, el piruvato se convierte en <strong>Lactato</strong> y se liberan iones H<sup>+</sup> (acidosis).</li>
+                            <li><strong>Predomina en:</strong> Sprints de 200m-800m, natación 100m-200m, HIIT, series de pesas de 8-20 reps.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/40751/running-runner-long-distance-fitness-40751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <h2 class="guide-section-title"><i class="fas fa-lightbulb"></i>Más Sobre el Sistema Glucolítico</h2>
+                     <div class="info-box-sistemas purple mt-4">
+                         <strong class="box-title"><i class="fas fa-recycle mr-2"></i>El Lactato NO es el Villano (¡Es un Aliado!)</strong>
+                         <p>Contrario a la creencia popular antigua, el lactato no es un simple producto de desecho que causa fatiga directamente. De hecho, es una molécula muy útil:</p>
+                         <ul>
+                             <li><strong>Combustible:</strong> Puede ser transportado a otras fibras musculares (especialmente fibras lentas), al corazón o al hígado para ser utilizado como fuente de energía (reconvertido a piruvato y luego a Acetil-CoA).</li>
+                             <li><strong>Gluconeogénesis:</strong> En el hígado, el lactato puede ser reconvertido a glucosa (Ciclo de Cori), que puede volver a la sangre para ser usada por los músculos.</li>
+                             <li><strong>Regulador del pH:</strong> La producción de lactato a partir de piruvato consume iones H<sup>+</sup>, ayudando a amortiguar la acidosis muscular inicialmente.</li>
+                         </ul>
+                         <p>La fatiga asociada con ejercicios de alta intensidad se relaciona más con la <strong class="highlight">acumulación de iones H<sup>+</sup></strong> (que disminuyen el pH muscular, afectando la función enzimática y la sensibilidad al calcio) y otros factores, aunque la producción de lactato sí indica una alta tasa de glucólisis anaeróbica.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1615243/pexels-photo-1615243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-wind"></i>Sistema 3: El Resistente - Oxidativo (Aeróbico) - Parte 1</h2>
+                    <p>Este es el sistema principal para producir ATP durante el reposo y en actividades de baja a moderada intensidad de larga duración.</p>
+                    <div class="system-summary-box mt-4">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-infinity"></i>Características del Sistema Oxidativo</h4>
+                        <ul>
+                            <li><strong>Combustible Principal:</strong> Principalmente <strong>Carbohidratos</strong> (glucógeno/glucosa) y <strong>Grasas</strong> (ácidos grasos). Proteínas en menor medida.</li>
+                            <li><strong>Localización:</strong> Ocurre dentro de las <strong>mitocondrias</strong> (las "centrales energéticas" de la célula).</li>
+                            <li><strong>Proceso Clave (Etapa 1 y 2):</strong>
+                                <ol class="list-decimal ml-4 my-2">
+                                    <li><strong>Preparación del Combustible:</strong>
+                                        <ul>
+                                            <li>El piruvato (de la glucólisis) se convierte en <code>Acetil-CoA</code>.</li>
+                                            <li>Los ácidos grasos (de las grasas) mediante la <strong>Beta-Oxidación</strong> también se convierten en <code>Acetil-CoA</code>.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Ciclo de Krebs (o Ciclo del Ácido Cítrico):</strong> El Acetil-CoA entra en un ciclo de reacciones que produce algo de ATP directamente, pero principalmente genera transportadores de electrones ricos en energía (<code>NADH</code> y <code>FADH₂</code>).</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/28003/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-sync"></i>Sistema 3: El Resistente - Oxidativo (Aeróbico) - Parte 2</h2>
+                    <div class="system-summary-box mt-4">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-infinity"></i>Características del Sistema Oxidativo (Continuación)</h4>
+                        <ul>
+                            <li><strong>Proceso Clave (Etapa 3):</strong>
+                                <ol class="list-decimal ml-4 my-2" start="3">
+                                     <li><strong>Cadena de Transporte de Electrones (CTE) y Fosforilación Oxidativa:</strong> Los electrones de NADH y FADH₂ pasan por una serie de complejos proteicos. Este flujo de electrones libera energía que se usa para bombear protones (H<sup>+</sup>) a través de la membrana mitocondrial interna. Finalmente, el oxígeno (O₂) actúa como aceptor final de electrones (formando agua). El gradiente de protones creado impulsa la síntesis de <strong class="highlight">grandes cantidades de ATP</strong>.</li>
+                                </ol>
+                            </li>
+                            <li><strong>Velocidad de Resíntesis de ATP:</strong> <span style="color: var(--askesis-green); font-weight: bold;">Baja</span> (es un proceso complejo con muchos pasos).</li>
+                            <li><strong>Capacidad (Duración):</strong> <span style="color: var(--askesis-green); font-weight: bold;">Muy Alta</span>. Mientras haya oxígeno y combustible, puede producir ATP durante horas.</li>
+                            <li><strong>¿Necesita Oxígeno?</strong> <span style="color: var(--askesis-red); font-weight: bold;">Sí</span> (Aeróbico).</li>
+                            <li><strong>Subproductos:</strong> Dióxido de Carbono (CO₂) y Agua (H₂O).</li>
+                            <li><strong>Predomina en:</strong> Reposo, actividades de baja a moderada intensidad y larga duración (caminar, trotar, ciclismo de fondo).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="slide-sistemas-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <h2 class="guide-section-title"><i class="fas fa-gas-pump"></i>Más Sobre el Sistema Oxidativo</h2>
+                     <div class="info-box-sistemas green mt-4">
+                         <strong class="box-title"><i class="fas fa-fire-alt mr-2"></i>Grasas: El Combustible de Larga Duración</strong>
+                         <p>Aunque los carbohidratos son cruciales para el sistema oxidativo, especialmente a medida que aumenta la intensidad (dentro del rango aeróbico), las <strong class="highlight">grasas son la principal fuente de energía</strong> para ejercicios de baja intensidad y muy larga duración, y también en reposo.</p>
+                         <p>Nuestras reservas de grasa corporal son mucho más abundantes que las de glucógeno y pueden, teóricamente, proporcionar energía durante días de actividad continua de baja intensidad. El entrenamiento de resistencia mejora la capacidad del cuerpo para movilizar y utilizar las grasas como combustible (ahorrando glucógeno).</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1229450/pexels-photo-1229450.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-network-wired"></i>¡No Están Separados! La Interacción Continua</h2>
+                    <p>Es fundamental entender que los tres sistemas energéticos <strong class="highlight">siempre están activos simultáneamente</strong>. Lo que cambia es la <strong>contribución relativa</strong> de cada uno dependiendo de la <strong>intensidad y duración</strong> del ejercicio.</p>
+                    <div class="interaction-diagram-box mt-4">
+                        <p class="font-semibold mb-2">[IMAGEN DE GRÁFICO: Contribución Energética vs. Tiempo/Intensidad]</p>
+                        <p class="text-sm"><em>(Visualiza un gráfico donde, al inicio de un esfuerzo máximo, la barra del Sistema de Fosfágenos es muy alta y disminuye rápidamente. La barra del Sistema Glucolítico sube después y tiene un pico entre los 30s-2min. La barra del Sistema Oxidativo sube más lentamente pero se mantiene elevada durante mucho tiempo, convirtiéndose en la principal si el ejercicio continúa a una intensidad sostenible).</em></p>
+                    </div>
+                    <p class="mt-4"><strong>En resumen:</strong></p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Inicio del ejercicio / Esfuerzos máximos muy cortos (0-15s):</strong> Predomina ATP-PCr.</li>
+                        <li><strong>Esfuerzos intensos (15s - 2/3min):</strong> Predomina Glucólisis Anaeróbica.</li>
+                        <li><strong>Esfuerzos prolongados / baja-moderada intensidad (>2-3 min):</strong> Predomina Sistema Oxidativo.</li>
+                    </ul>
+                    <p class="mt-2">La capacidad de cada sistema y cómo interactúan determina el rendimiento en diferentes tipos de actividades deportivas.</p>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-clipboard-check"></i>Aplicación Práctica para el Técnico Deportivo</h2>
+                    <p>Conocer los sistemas energéticos te permite:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li><strong>Analizar las Demandas de un Deporte:</strong> ¿Qué sistema(s) energético(s) son más importantes para un futbolista, un levantador de pesas, un maratonista o un nadador de 100m?</li>
+                        <li><strong>Diseñar Entrenamientos Específicos:</strong> Crear sesiones para mejorar la capacidad de cada sistema según las necesidades del deportista (ej. series cortas y máximas para fosfágenos, intervalos de 1-2 min para glucolítico, trabajo continuo o intervalos largos para oxidativo).</li>
+                        <li><strong>Entender la Nutrición Deportiva:</strong> Relacionar los macronutrientes (carbohidratos, grasas) con los sistemas energéticos que los utilizan predominantemente.</li>
+                        <li><strong>Interpretar la Fatiga:</strong> Comprender que la fatiga puede originarse por diferentes causas según qué sistema esté limitado (agotamiento de PCr, acidosis por H<sup>+</sup>, agotamiento de glucógeno, etc.).</li>
+                        <li><strong>Planificar la Recuperación:</strong> Saber que la recuperación de cada sistema toma tiempos diferentes (PCr se recupera rápido, glucógeno tarda horas/días).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/159579/crayons-coloring-book-coloring-book-cc0-159579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-sistemas">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Sistemas Energéticos (Parte 1)</h2>
+                        <dl>
+                            <dt>Sistemas Energéticos</dt>
+                            <dd>Las tres vías metabólicas (Fosfágenos, Glucolítico, Oxidativo) que resintetizan ATP.</dd>
+                            <dt>Sistema de Fosfágenos (ATP-PCr)</dt>
+                            <dd>Sistema anaeróbico que usa Fosfocreatina (PCr) para resintetizar ATP muy rápidamente. Duración: ~5-15s.</dd>
+                            <dt>Fosfocreatina (PCr o CP)</dt>
+                            <dd>Molécula de alta energía almacenada en el músculo que dona su fosfato al ADP.</dd>
+                            <dt>Creatina Quinasa (CK)</dt>
+                            <dd>Enzima que cataliza la reacción entre PCr y ADP.</dd>
+                            <dt>Sistema Glucolítico</dt>
+                            <dd>Sistema que descompone glucosa o glucógeno para formar ATP. Puede ser anaeróbico (rápido, produce lactato) o el inicio del aeróbico.</dd>
+                            <dt>Glucólisis</dt>
+                            <dd>Serie de reacciones que descomponen la glucosa en piruvato.</dd>
+                            <dt>Glucógeno</dt>
+                            <dd>Forma de almacenamiento de glucosa en los músculos y el hígado.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-12" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-sistemas">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Sistemas Energéticos (Parte 2)</h2>
+                        <dl>
+                            <dt>Piruvato</dt>
+                            <dd>Producto final de la glucólisis. Puede convertirse en lactato (anaeróbico) o entrar al sistema oxidativo (aeróbico).</dd>
+                            <dt>Lactato</dt>
+                            <dd>Molécula producida a partir del piruvato durante la glucólisis anaeróbica rápida. Puede ser usado como combustible.</dd>
+                            <dt>Acidosis Muscular</dt>
+                            <dd>Disminución del pH muscular debido a la acumulación de iones hidrógeno (H<sup>+</sup>), asociada a la fatiga en ejercicios intensos.</dd>
+                            <dt>Sistema Oxidativo (Aeróbico)</dt>
+                            <dd>Sistema energético que utiliza oxígeno para producir grandes cantidades de ATP a partir de carbohidratos y grasas en las mitocondrias.</dd>
+                            <dt>Mitocondrias</dt>
+                            <dd>Orgánulos celulares ("centrales energéticas") donde ocurre la producción de energía aeróbica.</dd>
+                            <dt>Acetil-CoA</dt>
+                            <dd>Molécula intermediaria clave que entra en el Ciclo de Krebs.</dd>
+                            <dt>Ciclo de Krebs (Ciclo del Ácido Cítrico)</dt>
+                            <dd>Serie de reacciones en la mitocondria que oxida el Acetil-CoA, produciendo ATP y transportadores de electrones (NADH, FADH₂).</dd>
+                            <dt>Cadena de Transporte de Electrones (CTE)</dt>
+                            <dd>Proceso final de la respiración aeróbica en la mitocondria, donde se usa oxígeno para producir la mayor parte del ATP.</dd>
+                            <dt>Anaeróbico</dt>
+                            <dd>Proceso que no requiere oxígeno.</dd>
+                            <dt>Aeróbico</dt>
+                            <dd>Proceso que requiere oxígeno.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-sistemas-13" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-check-double"></i>Conclusión: Los Motores de Nuestro Cuerpo</h2>
+                    <div class="info-box-sistemas green mt-6">
+                         <strong class="box-title"><i class="fas fa-graduation-cap"></i> Para Llevar</strong>
+                         <p>Nuestro cuerpo es increíblemente adaptable, utilizando diferentes "motores" (sistemas energéticos) para suministrar ATP según la demanda. El sistema de fosfágenos es para la potencia explosiva, el glucolítico para la velocidad sostenida, y el oxidativo para la resistencia.</p>
+                         <p class="font-semibold mt-3">Entender cómo funcionan y colaboran estos sistemas es la base para entrenar de forma inteligente y efectiva, permitiéndote como Técnico Deportivo optimizar el rendimiento de tus futuros atletas o clientes. ¡Sigue explorando el fascinante mundo de la fisiología del ejercicio!</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-sistemas" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-sistemas" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-sistemas" class="w-full sm:w-auto bg-askesis-sistemas-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-sistemas" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Sistemas Energéticos!
+            </div>
+            <p class="mb-6">Ahora tienes una base sólida sobre cómo el cuerpo produce energía para el ejercicio. ¡Aplica este conocimiento!</p>
+            <button id="restart-button-sistemas" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía de Sistemas Energéticos
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Sistemas%20Energéticos" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20de%20Sistemas%20Energéticos." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterSistemas"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía de SISTEMAS ENERGÉTICOS ***
+            const guideIdPrefix = 'sistemas'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
