@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Sistema Cardiovascular y Ejercicio</title>
+    <meta name="description" content="Guía interactiva sobre las respuestas y adaptaciones del sistema cardiovascular al ejercicio, para estudiantes de Técnico Deportivo Universitario.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-cardio-blue': '#005A9C', // Azul de la guía Cardio (ULagos/Corporativo)
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-cardio-blue: #005A9C; /* Azul de la guía Cardio */
+            --askesis-green: #008037; /* Verde de la guía Cardio */
+            --askesis-orange: #F58220; /* Naranja de la guía Cardio */
+            --askesis-purple: #6f42c1; /* Morado de la guía Cardio */
+            --askesis-red: #dc3545; /* Rojo de la guía Cardio */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-cardio-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-cardio-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-cardio-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-cardio-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+        .slide-content-wrapper .formula { 
+            font-family: 'Times New Roman', Times, serif; font-style: italic; font-weight: bold; color: var(--askesis-purple); background-color: var(--askesis-accent-purple-light); padding: 5px 10px; border-radius: 4px; display: inline-block; margin: 5px 0;
+        }
+
+        /* Cajas de información específicas de esta guía Cardiovascular */
+        .slide-content-wrapper .intro-box-cardio {
+             border-left: 4px solid var(--askesis-cardio-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-cardio strong { color: var(--askesis-cardio-blue); }
+        
+        .slide-content-wrapper .key-concept-box {
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+        
+        .slide-content-wrapper .response-adaptation-list ul { list-style: none; padding-left: 0; }
+        .slide-content-wrapper .response-adaptation-list li {
+             border-bottom: 1px dashed var(--askesis-border-light); padding-bottom: 1rem; margin-bottom: 1rem;
+        }
+         .slide-content-wrapper .response-adaptation-list li:last-child { border-bottom: none;}
+        .slide-content-wrapper .response-adaptation-list strong.term-title { /* Término cardiovascular */
+             display: block;
+             color: var(--askesis-green); 
+             font-size: 1.15em; /* Un poco más grande */
+             font-weight: 700;
+             font-family: 'Roboto', sans-serif;
+             margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .response-adaptation-list .response::before { content: "⚡ Aguda: "; font-weight: bold; color: var(--askesis-orange); }
+        .slide-content-wrapper .response-adaptation-list .adaptation::before { content: "⏳ Crónica: "; font-weight: bold; color: var(--askesis-cardio-blue); }
+
+
+        .slide-content-wrapper .info-box-cardio { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-cardio.blue { background-color: var(--askesis-accent-blue-light); border-left-color: var(--askesis-cardio-blue); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-cardio.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        
+        .slide-content-wrapper .info-box-cardio strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-cardio.blue strong.box-title { color: var(--askesis-cardio-blue); }
+        .slide-content-wrapper .info-box-cardio.green strong.box-title { color: var(--askesis-green); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-cardio-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-cardio { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-cardio .nav-link-cardio { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; 
+            margin: 0 0.05rem; 
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; 
+            white-space: nowrap;
+        }
+        #main-nav-cardio .nav-link-cardio:hover,
+        #main-nav-cardio .nav-link-cardio.active {
+            background-color: var(--askesis-cardio-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-cardio { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-cardio { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-green), var(--askesis-cardio-blue));
+        }
+        #navigation-buttons-cardio button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-cardio button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-cardio-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-cardio-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-cardio {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-cardio-blue);
+        }
+        .slide-content-wrapper .glossary-box-cardio .guide-section-title { 
+             color: var(--askesis-cardio-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-cardio dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-cardio dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-cardio dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-cardio" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-cardio-0" class="nav-link-cardio">Intro</a></li>
+            <li><a href="#slide-cardio-1" class="nav-link-cardio">Componentes</a></li>
+            <li><a href="#slide-cardio-2" class="nav-link-cardio">Respuestas Agudas 1</a></li>
+            <li><a href="#slide-cardio-3" class="nav-link-cardio">Respuestas Agudas 2</a></li>
+            <li><a href="#slide-cardio-4" class="nav-link-cardio">Ecuación Fick</a></li>
+            <li><a href="#slide-cardio-5" class="nav-link-cardio">Adaptaciones 1</a></li>
+            <li><a href="#slide-cardio-6" class="nav-link-cardio">Adaptaciones 2</a></li>
+            <li><a href="#slide-cardio-7" class="nav-link-cardio">Control Cardio</a></li>
+            <li><a href="#slide-cardio-8" class="nav-link-cardio">Aplicación TDU</a></li>
+            <li><a href="#slide-cardio-9" class="nav-link-cardio">Glosario 1</a></li>
+            <li><a href="#slide-cardio-10" class="nav-link-cardio">Glosario 2</a></li>
+            <li><a href="#slide-cardio-11" class="nav-link-cardio">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-cardio"> <div id="progress-bar-container-cardio" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-cardio" class="text-center mb-1 text-sm font-semibold text-askesis-cardio-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-cardio" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-cardio"> <section id="slide-cardio-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-heartbeat"></i>Sistema Cardiovascular y Ejercicio</h1>
+                    <p class="guide-subtitle">El Motor que Impulsa el Rendimiento</p>
+                    <div class="intro-box-cardio">
+                        <p>Ya sabemos cómo se produce la energía (ATP) y qué sistemas la generan. Ahora, necesitamos entender cómo llega esa energía (y el oxígeno necesario para el sistema aeróbico) a los músculos que trabajan, y cómo se eliminan los desechos. Aquí entra en juego el protagonista de esta guía: el <strong>Sistema Cardiovascular</strong>.</p>
+                    </div>
+                    <div class="intro-box-cardio">
+                        <p>Este sistema, compuesto por el corazón, los vasos sanguíneos y la sangre, es la <strong>red de transporte vital</strong> del cuerpo. Durante el ejercicio, sufre cambios inmediatos (respuestas agudas) y modificaciones a largo plazo (adaptaciones crónicas) que son cruciales para el rendimiento deportivo y la salud general. ¡Vamos a explorarlo!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/5473185/pexels-photo-5473185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-project-diagram"></i>Componentes Clave: Un Repaso Rápido</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Corazón:</strong> La bomba muscular que impulsa la sangre (4 cámaras: 2 aurículas, 2 ventrículos).</li>
+                        <li><strong>Vasos Sanguíneos:</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li><strong>Arterias:</strong> Llevan sangre oxigenada del corazón al cuerpo.</li>
+                                <li><strong>Arteriolas:</strong> Ramas pequeñas, regulan flujo.</li>
+                                <li><strong>Capilares:</strong> Intercambio de gases, nutrientes y desechos.</li>
+                                <li><strong>Vénulas:</strong> Recogen sangre desoxigenada.</li>
+                                <li><strong>Venas:</strong> Devuelven sangre desoxigenada al corazón.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sangre:</strong> Fluido transportador (plasma, glóbulos rojos/O₂, blancos, plaquetas).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-cardio-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-shipping-fast"></i>Respuestas Cardiovasculares Agudas (Parte 1)</h2>
+                    <p class="mb-3">Al iniciar el ejercicio, el sistema cardiovascular responde inmediatamente:</p>
+                    <div class="response-adaptation-list">
+                        <ul>
+                            <li>
+                                <strong class="term-title">Frecuencia Cardíaca (FC)</strong>
+                                <p class="response">Aumenta rápidamente, se estabiliza si la intensidad es constante (submáxima), o sigue aumentando hasta FC máxima.</p>
+                                <p class="adaptation">Con entrenamiento de resistencia, FC en reposo y submáxima disminuye (Bradicardia).</p>
+                            </li>
+                            <li>
+                                <strong class="term-title">Volumen Sistólico (VS) o Volumen Latido</strong>
+                                <p class="response">Aumenta con intensidad hasta ~40-60% VO₂máx, luego se estabiliza. Sangre expulsada por latido.</p>
+                                <p class="adaptation">Entrenamiento aumenta VS máximo y en reposo (mayor ventrículo izquierdo).</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3768911/pexels-photo-3768911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tachometer-alt"></i>Respuestas Cardiovasculares Agudas (Parte 2)</h2>
+                    <div class="response-adaptation-list">
+                        <ul>
+                            <li>
+                                <strong class="term-title">Gasto Cardíaco (GC) o Débito Cardíaco</strong>
+                                <p class="response">Aumenta linealmente con intensidad. <span class="formula">GC = FC x VS</span>.</p>
+                                <p class="adaptation">GC máximo aumenta con entrenamiento (principalmente por VS).</p>
+                            </li>
+                            <li>
+                                <strong class="term-title">Flujo Sanguíneo Muscular</strong>
+                                <p class="response"><strong>Vasodilatación</strong> en músculos activos (hasta 80-85% GC), <strong>vasoconstricción</strong> en órganos menos activos.</p>
+                                <p class="adaptation">Mejora vasodilatación, aumenta densidad capilar muscular.</p>
+                            </li>
+                             <li>
+                                <strong class="term-title">Presión Arterial (PA)</strong>
+                                <p class="response"><strong>Sistólica (PAS)</strong> aumenta linealmente. <strong>Diastólica (PAD)</strong> estable o disminuye ligeramente.</p>
+                                 <p class="adaptation">Entrenamiento aeróbico puede reducir PA en reposo (hipertensos).</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/703012/pexels-photo-703012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-lungs"></i>Intercambio de Oxígeno</h2>
+                    <div class="response-adaptation-list">
+                        <ul>
+                            <li>
+                                <strong class="term-title">Diferencia Arterio-Venosa de Oxígeno (a-vO₂ diff)</strong>
+                                <p class="response">Aumenta durante el ejercicio. Representa el O₂ que los tejidos extraen de la sangre.</p>
+                                <p class="adaptation">Entrenamiento mejora capacidad muscular de extraer y usar O₂, aumentando a-vO₂ diff máxima.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-box-cardio blue mt-6">
+                         <strong class="box-title"><i class="fas fa-calculator"></i> La Ecuación de Fick: El Flujo de Oxígeno</strong>
+                         <p>El consumo de oxígeno (VO₂) está determinado por el gasto cardíaco y la capacidad de los tejidos para extraer oxígeno. La Ecuación de Fick lo resume: <span class="formula">VO₂ = GC x (a-vO₂ diff)</span>. El entrenamiento mejora ambos componentes, llevando a un mayor VO₂máx.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/260409/pexels-photo-260409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-heart"></i><i class="fas fa-plus" style="font-size: 0.6em;"></i>Un Corazón Más Fuerte: Adaptaciones Crónicas (Parte 1)</h2>
+                    <p class="mb-3">El entrenamiento regular, especialmente el de resistencia (aeróbico), provoca cambios duraderos:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Hipertrofia Cardíaca ("Corazón de Atleta"):</strong> El miocardio (ventrículo izquierdo) aumenta su tamaño y grosor. Permite bombear más sangre (mayor VS).</li>
+                        <li><strong>Bradicardia Sinusal en Reposo:</strong> Disminución de la FC en reposo. Corazón entrenado es más eficiente.</li>
+                        <li><strong>Aumento del Volumen Sistólico (VS):</strong> Tanto en reposo como en ejercicio máximo. Clave para rendimiento aeróbico.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-cardio-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tint"></i>Un Sistema Más Eficiente: Adaptaciones Crónicas (Parte 2)</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Aumento del Gasto Cardíaco Máximo:</strong> Permite transportar más oxígeno a los músculos.</li>
+                        <li><strong>Aumento del Volumen Sanguíneo y Plasmático:</strong> Facilita transporte de O₂ y termorregulación.</li>
+                        <li><strong>Mayor Densidad Capilar Muscular:</strong> Más capilares alrededor de fibras entrenadas, mejorando intercambio.</li>
+                        <li><strong>Mejora de la Función Endotelial:</strong> Vasos más elásticos y mejor vasodilatación.</li>
+                    </ul>
+                    <div class="info-box-cardio green mt-6">
+                      <strong class="box-title"><i class="fas fa-medal"></i> Adaptaciones = Mayor Rendimiento y Salud</strong>
+                      <p>Todas estas adaptaciones no solo mejoran la capacidad para realizar ejercicio (mayor VO₂máx, mayor resistencia), sino que también contribuyen a una mejor salud cardiovascular general.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-brain"></i>¿Quién Manda Aquí? Control Cardiovascular</h2>
+                    <p class="mb-3">Las respuestas cardiovasculares están finamente reguladas por:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Sistema Nervioso Autónomo (SNA):</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li><strong>Simpático ("Acelerador"):</strong> Aumenta FC, contractilidad, vasoconstricción (áreas no activas).</li>
+                                <li><strong>Parasimpático ("Freno"):</strong> Disminuye FC. Se retira al inicio del ejercicio.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Regulación Hormonal:</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li><strong>Catecolaminas (Adrenalina/Noradrenalina):</strong> Refuerzan efectos simpáticos.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Factores Locales Musculares:</strong>
+                            <ul class="list-circle list-inside ml-4">
+                                <li>Sustancias liberadas por músculos activos causan <strong>vasodilatación local</strong>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-cardio-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-user-md"></i>Aplicación Práctica para el TDU</h2>
+                    <p>Comprender las respuestas y adaptaciones cardiovasculares te permite:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li><strong>Monitorizar la Intensidad:</strong> Usar la FC como indicador práctico.</li>
+                        <li><strong>Evaluar la Condición Física:</strong> Medir FC en reposo, recuperación, tests.</li>
+                        <li><strong>Prescribir Ejercicio Aeróbico:</strong> Diseñar programas de resistencia.</li>
+                        <li><strong>Reconocer Señales de Alarma:</strong> Identificar respuestas anormales de FC o PA.</li>
+                        <li><strong>Educar sobre Salud Cardiovascular:</strong> Explicar beneficios del ejercicio.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-cardio-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/11035390/pexels-photo-11035390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-cardio">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Cardiovascular (Parte 1)</h2>
+                        <dl>
+                            <dt>Sistema Cardiovascular</dt>
+                            <dd>Corazón, vasos sanguíneos y sangre; transporte de O₂, nutrientes, desechos.</dd>
+                            <dt>Frecuencia Cardíaca (FC)</dt>
+                            <dd>Latidos del corazón por minuto (lpm).</dd>
+                            <dt>Volumen Sistólico (VS)</dt>
+                            <dd>Sangre expulsada por el ventrículo izquierdo por latido (ml/latido).</dd>
+                            <dt>Gasto Cardíaco (GC)</dt>
+                            <dd>Sangre bombeada por el corazón por minuto (L/min). GC = FC x VS.</dd>
+                            <dt>Presión Arterial (PA)</dt>
+                            <dd>Fuerza de la sangre contra arterias (PAS/PAD mmHg).</dd>
+                            <dt>Vasodilatación</dt>
+                            <dd>Ensanchamiento de vasos sanguíneos.</dd>
+                            <dt>Vasoconstricción</dt>
+                            <dd>Estrechamiento de vasos sanguíneos.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-cardio">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Cardiovascular (Parte 2)</h2>
+                        <dl>
+                            <dt>Diferencia Arterio-Venosa de O₂ (a-vO₂ diff)</dt>
+                            <dd>Diferencia de O₂ entre sangre arterial y venosa; O₂ extraído por tejidos.</dd>
+                            <dt>Ecuación de Fick</dt>
+                            <dd>VO₂ = GC x (a-vO₂ diff).</dd>
+                            <dt>VO₂máx</dt>
+                            <dd>Máximo consumo de oxígeno; indicador de capacidad aeróbica.</dd>
+                            <dt>Hipertrofia Cardíaca</dt>
+                            <dd>Aumento del tamaño del músculo cardíaco.</dd>
+                            <dt>Bradicardia Sinusal</dt>
+                            <dd>FC en reposo < 60 lpm (común en entrenados).</dd>
+                            <dt>Densidad Capilar</dt>
+                            <dd>Número de capilares por unidad de área muscular.</dd>
+                            <dt>Sistema Nervioso Autónomo (SNA)</dt>
+                            <dd>Controla funciones involuntarias (Simpático y Parasimpático).</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-cardio-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2775209/pexels-photo-2775209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-award"></i>Conclusión: El Corazón del Rendimiento</h2>
+                    <div class="info-box-cardio green mt-6">
+                         <strong class="box-title"><i class="fas fa-graduation-cap"></i> Para Recordar</strong>
+                         <p>El sistema cardiovascular es una maravilla de la ingeniería biológica, capaz de ajustarse instantáneamente al ejercicio y adaptarse profundamente al entrenamiento.</p>
+                         <p class="font-semibold mt-3">Comprender cómo funciona este "motor" te dará herramientas esenciales para evaluar, prescribir y optimizar el entrenamiento de forma segura y eficaz como Técnico Deportivo.</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-cardio" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-cardio" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-cardio" class="w-full sm:w-auto bg-askesis-cardio-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-cardio" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Sistema Cardiovascular y Ejercicio!
+            </div>
+            <p class="mb-6">Este conocimiento es vital para tu desarrollo como Técnico Deportivo. ¡Sigue adelante!</p>
+            <button id="restart-button-cardio" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía Cardiovascular
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Cardiovascular" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20Cardiovascular." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterCardio"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía CARDIOVASCULAR ***
+            const guideIdPrefix = 'cardio'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
