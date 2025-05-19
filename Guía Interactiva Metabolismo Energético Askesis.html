@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Metabolismo Energético</title>
+    <meta name="description" content="Guía interactiva sobre el uso de sustratos energéticos (carbohidratos, grasas) y el cociente respiratorio (RER) durante el reposo y el ejercicio.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-metabolismo-blue': '#005A9C', // Azul de la guía Metabolismo (ULagos/Corporativo)
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-metabolismo-blue: #005A9C; /* Azul de la guía Metabolismo */
+            --askesis-green: #008037; /* Verde de la guía Metabolismo */
+            --askesis-orange: #F58220; /* Naranja de la guía Metabolismo */
+            --askesis-purple: #6f42c1; /* Morado de la guía Metabolismo */
+            --askesis-red: #dc3545; /* Rojo de la guía Metabolismo */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-metabolismo-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-metabolismo-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-metabolismo-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-metabolismo-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+        .slide-content-wrapper .formula { 
+            font-family: 'Times New Roman', Times, serif; font-style: italic; font-weight: bold; color: var(--askesis-purple); background-color: var(--askesis-accent-purple-light); padding: 5px 10px; border-radius: 4px; display: inline-block; margin: 5px 0;
+        }
+
+        /* Cajas de información específicas de esta guía Metabolismo Energético */
+        .slide-content-wrapper .intro-box-metabolismo {
+             border-left: 4px solid var(--askesis-metabolismo-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-metabolismo strong { color: var(--askesis-metabolismo-blue); }
+        
+        .slide-content-wrapper .key-concept-box {
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+
+        .slide-content-wrapper .substrate-summary-box { 
+            border: 1px solid var(--askesis-border-light);
+            border-left: 5px solid var(--askesis-green); 
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            background-color: var(--askesis-bg-content-wrapper);
+        }
+        .slide-content-wrapper .substrate-summary-box .guide-subsubsection-title { 
+             margin-top: 0; 
+             color: var(--askesis-green);
+             font-size: 1.3em; 
+             border-bottom: 1px solid var(--askesis-green);
+             padding-bottom: 0.3rem;
+             margin-bottom: 1rem;
+        }
+         .slide-content-wrapper .substrate-summary-box .guide-subsubsection-title i { color: var(--askesis-green); }
+        .slide-content-wrapper .substrate-summary-box ul { list-style: none; padding-left: 0; }
+        .slide-content-wrapper .substrate-summary-box li { padding-left: 20px; position: relative; }
+        .slide-content-wrapper .substrate-summary-box li::before { 
+            content: "\f101"; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--askesis-green);
+        }
+        
+        .slide-content-wrapper .rer-table { 
+             width: 80%; margin: 1.5rem auto; border-collapse: collapse; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 0.9em;
+        }
+        .slide-content-wrapper .rer-table th, .slide-content-wrapper .rer-table td {
+            border: 1px solid var(--askesis-border-light); padding: 8px 10px; text-align: center; 
+        }
+        .slide-content-wrapper .rer-table th {
+            background-color: var(--askesis-accent-orange-light); color: var(--askesis-orange); font-weight: 700;
+        }
+        .slide-content-wrapper .rer-table code { font-weight: bold; }
+
+        .slide-content-wrapper .info-box-metabolismo { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-metabolismo.blue { background-color: var(--askesis-accent-blue-light); border-left-color: var(--askesis-metabolismo-blue); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-metabolismo.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-metabolismo.orange { background-color: var(--askesis-accent-orange-light); border-left-color: var(--askesis-orange); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-metabolismo.red { background-color: var(--askesis-accent-red-light); border-left-color: var(--askesis-red); color: var(--askesis-text-dark);}
+
+        .slide-content-wrapper .info-box-metabolismo strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-metabolismo.blue strong.box-title { color: var(--askesis-metabolismo-blue); }
+        .slide-content-wrapper .info-box-metabolismo.green strong.box-title { color: var(--askesis-green); }
+        .slide-content-wrapper .info-box-metabolismo.orange strong.box-title { color: var(--askesis-orange); }
+        .slide-content-wrapper .info-box-metabolismo.red strong.box-title { color: var(--askesis-red); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-metabolismo-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-metabolismo { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-metabolismo .nav-link-metabolismo { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; 
+            margin: 0 0.05rem; 
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; 
+            white-space: nowrap;
+        }
+        #main-nav-metabolismo .nav-link-metabolismo:hover,
+        #main-nav-metabolismo .nav-link-metabolismo.active {
+            background-color: var(--askesis-metabolismo-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-metabolismo { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-metabolismo { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-green), var(--askesis-metabolismo-blue));
+        }
+        #navigation-buttons-metabolismo button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-metabolismo button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-metabolismo-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-metabolismo-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-metabolismo {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-metabolismo-blue);
+        }
+        .slide-content-wrapper .glossary-box-metabolismo .guide-section-title { 
+             color: var(--askesis-metabolismo-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-metabolismo dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-metabolismo dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-metabolismo dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-metabolismo" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-metabolismo-0" class="nav-link-metabolismo">Intro 1</a></li>
+            <li><a href="#slide-metabolismo-1" class="nav-link-metabolismo">Intro 2</a></li>
+            <li><a href="#slide-metabolismo-2" class="nav-link-metabolismo">Carbs</a></li>
+            <li><a href="#slide-metabolismo-3" class="nav-link-metabolismo">Grasas</a></li>
+            <li><a href="#slide-metabolismo-4" class="nav-link-metabolismo">Proteínas</a></li>
+            <li><a href="#slide-metabolismo-5" class="nav-link-metabolismo">Selección: Intensidad</a></li>
+            <li><a href="#slide-metabolismo-6" class="nav-link-metabolismo">Selección: Duración</a></li>
+            <li><a href="#slide-metabolismo-7" class="nav-link-metabolismo">RER Intro</a></li>
+            <li><a href="#slide-metabolismo-8" class="nav-link-metabolismo">Tabla RER</a></li>
+            <li><a href="#slide-metabolismo-9" class="nav-link-metabolismo">Limit. RER</a></li>
+            <li><a href="#slide-metabolismo-10" class="nav-link-metabolismo">Aplic. TDU</a></li>
+            <li><a href="#slide-metabolismo-11" class="nav-link-metabolismo">Glosario 1</a></li>
+            <li><a href="#slide-metabolismo-12" class="nav-link-metabolismo">Glosario 2</a></li>
+            <li><a href="#slide-metabolismo-13" class="nav-link-metabolismo">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-metabolismo"> <div id="progress-bar-container-metabolismo" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-metabolismo" class="text-center mb-1 text-sm font-semibold text-askesis-metabolismo-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-metabolismo" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-metabolismo"> <section id="slide-metabolismo-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/163405/fire-kitchen-cooking-flames-163405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-fire-alt"></i>Metabolismo Energético: Combustibles</h1>
+                    <p class="guide-subtitle">¿Qué Quemamos y Cuándo?</p>
+                    <div class="intro-box-metabolismo">
+                        <p>En la guía anterior (Guía 2), exploramos los <strong>Sistemas Energéticos</strong>, las "fábricas" que resintetizan ATP. Ahora, nos enfocaremos en los <strong>combustibles</strong> que alimentan esas fábricas: principalmente los <strong>carbohidratos</strong> y las <strong>grasas</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/326240/pexels-photo-326240.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-question-circle"></i>Continuación de la Introducción</h2>
+                     <div class="intro-box-metabolismo">
+                        <p>Entender cuál de estos combustibles utiliza preferentemente nuestro cuerpo en diferentes situaciones (reposo vs. distintas intensidades de ejercicio) es clave para la nutrición deportiva y la planificación del entrenamiento.</p>
+                        <p>Además, introduciremos un concepto útil para estimar qué combustible estamos usando: el <strong>Cociente Respiratorio (RER)</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-utensils"></i>Macronutrientes como Combustible</h2>
+                    <p class="mb-3">Aunque las proteínas pueden usarse para energía en situaciones extremas, los principales combustibles son carbohidratos y grasas.</p>
+                    <div class="substrate-summary-box">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-bread-slice"></i>Carbohidratos (Hidratos de Carbono)</h4>
+                        <ul>
+                            <li><strong>Forma de Almacenamiento:</strong> Principalmente como <strong>Glucógeno</strong> en músculos e hígado. También como <strong>Glucosa</strong> en sangre.</li>
+                            <li><strong>Vías Metabólicas:</strong> Usados en <strong>Glucólisis Anaeróbica</strong> (rápida, sin O₂) y <strong>Sistema Oxidativo</strong> (más lenta, con O₂).</li>
+                            <li><strong>Rendimiento Energético:</strong> Producen ATP más rápidamente que las grasas. Combustible preferido para ejercicios de <strong class="highlight">alta intensidad</strong>.</li>
+                            <li><strong>Reservas:</strong> <span style="color: var(--askesis-red); font-weight: bold;">Limitadas</span>. Pueden agotarse tras 1-2 horas de ejercicio intenso si no se reponen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-oil-can"></i>Macronutrientes como Combustible</h2>
+                     <div class="substrate-summary-box">
+                        <h4 class="guide-subsubsection-title"><i class="fas fa-bacon"></i>Grasas (Lípidos)</h4>
+                        <ul>
+                            <li><strong>Forma de Almacenamiento:</strong> Principalmente como <strong>Triglicéridos</strong> en tejido adiposo y músculo. Se descomponen en <strong>Ácidos Grasos Libres (AGL)</strong>.</li>
+                            <li><strong>Vías Metabólicas:</strong> Usados exclusivamente por el <strong>Sistema Oxidativo</strong> (requieren O₂) vía <strong>Beta-Oxidación</strong>.</li>
+                            <li><strong>Rendimiento Energético:</strong> Producen ATP más lentamente pero generan <strong class="highlight">mucha más cantidad de ATP</strong> por gramo. Ideal para <strong class="highlight">baja-moderada intensidad y larga duración</strong>, y en <strong>reposo</strong>.</li>
+                            <li><strong>Reservas:</strong> <span style="color: var(--askesis-green); font-weight: bold;">Prácticamente ilimitadas</span> en comparación con carbohidratos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-drumstick-bite"></i>Proteínas y Selección de Combustible</h2>
+                    <div class="info-box-metabolismo blue">
+                         <strong class="box-title"><i class="fas fa-balance-scale"></i> Proteínas como Combustible</strong>
+                         <p>Las proteínas (aminoácidos) normalmente contribuyen muy poco (<5-10%) a la producción total de ATP durante el ejercicio. Su rol principal es estructural y funcional. Su contribución puede aumentar ligeramente en ejercicios muy prolongados (>3 horas) o cuando las reservas de glucógeno están muy bajas.</p>
+                    </div>
+                    <p class="mt-6">La elección del combustible principal depende fundamentalmente de dos factores: la intensidad y la duración del ejercicio.</p>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-sliders-h"></i>¿Qué Quemamos? Rol de la Intensidad</h2>
+                    <h3 class="guide-subsection-title"><i class="fas fa-tachometer-alt"></i>Intensidad del Ejercicio:</h3>
+                    <ul>
+                        <li><strong>Reposo y Baja Intensidad (ej. caminar):</strong> Predomina el uso de <strong class="highlight">Grasas</strong>.</li>
+                        <li><strong>Intensidad Moderada (ej. trote sostenido):</strong> Aumenta la contribución de <strong class="highlight">Carbohidratos</strong>, grasas siguen siendo importantes.</li>
+                        <li><strong>Alta Intensidad (ej. sprint, HIIT):</strong> Predomina casi exclusivamente <strong class="highlight">Carbohidratos</strong>.</li>
+                    </ul>
+                    <div class="key-concept-box mt-4">
+                        <strong>Crossover Concept (Concepto de Cruce)</strong>
+                        <p>Describe el punto (intensidad del ejercicio) en el que la contribución de los carbohidratos a la producción de energía supera a la de las grasas. Suele ocurrir a intensidades moderadas (~50-70% VO₂máx).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/866027/pexels-photo-866027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-hourglass-half"></i>¿Qué Quemamos? Rol de la Duración</h2>
+                    <h3 class="guide-subsection-title"><i class="far fa-clock"></i>Duración del Ejercicio:</h3>
+                    <ul>
+                        <li><strong>Inicio del Ejercicio (cualquier intensidad):</strong> Se utilizan más los <strong class="highlight">Carbohidratos</strong> (glucógeno muscular).</li>
+                        <li><strong>Ejercicio Prolongado (baja-moderada intensidad):</strong> A medida que el ejercicio continúa y el glucógeno disminuye, el cuerpo aumenta progresivamente la dependencia de las <strong class="highlight">Grasas</strong>.</li>
+                    </ul>
+                    <div class="info-box-metabolismo orange mt-4">
+                         <strong class="box-title"><i class="fas fa-running"></i> "Chocar con el Muro" (Hitting the Wall)</strong>
+                         <p>Fenómeno común en maratonistas cuando las reservas de glucógeno se agotan. La intensidad debe disminuir drásticamente porque el metabolismo de grasas no puede suministrar ATP a la misma velocidad que los carbohidratos para un ritmo elevado.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <h2 class="guide-section-title"><i class="fas fa-calculator"></i>¿Cómo Sabemos Qué Quemamos? El RER</h2>
+                     <p>Una forma indirecta de estimar qué proporción de carbohidratos y grasas estamos utilizando durante el ejercicio aeróbico en estado estable es midiendo el intercambio de gases respiratorios (O₂ consumido y CO₂ producido) y calculando el Cociente de Intercambio Respiratorio (RER).</p>
+                     <div class="key-concept-box mt-4">
+                        <strong>Cociente de Intercambio Respiratorio (RER)</strong>
+                        <p>Es la relación entre el volumen de dióxido de carbono producido (VCO₂) y el volumen de oxígeno consumido (VO₂). <span class="formula">RER = VCO₂ / VO₂</span>.</p>
+                    </div>
+                     <p class="mt-3">La cantidad de CO₂ producido y O₂ consumido varía según el combustible:</p>
+                     <ul>
+                         <li><strong>Metabolismo exclusivo de Grasas:</strong> RER cercano a <strong class="highlight">0.70</strong>.</li>
+                         <li><strong>Metabolismo exclusivo de Carbohidratos:</strong> RER igual a <strong class="highlight">1.00</strong>.</li>
+                         <li><strong>Metabolismo Mixto:</strong> RER entre 0.70 y 1.00. Un RER de ~0.85 indica ~50% CHO y 50% grasas.</li>
+                     </ul>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-table"></i>Tabla de Valores RER Aproximados</h2>
+                    <table class="rer-table">
+                         <thead>
+                             <tr>
+                                 <th>RER</th>
+                                 <th>% CHO (aprox.)</th>
+                                 <th>% Grasas (aprox.)</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr><td><code>0.70</code></td><td>0%</td><td>100%</td></tr>
+                             <tr><td><code>0.75</code></td><td>17%</td><td>83%</td></tr>
+                             <tr><td><code>0.80</code></td><td>34%</td><td>66%</td></tr>
+                             <tr><td><code>0.85</code></td><td>51%</td><td>49%</td></tr>
+                             <tr><td><code>0.90</code></td><td>68%</td><td>32%</td></tr>
+                             <tr><td><code>0.95</code></td><td>84%</td><td>16%</td></tr>
+                             <tr><td><code>1.00</code></td><td>100%</td><td>0%</td></tr>
+                         </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-exclamation-triangle"></i>Limitaciones del RER</h2>
+                    <div class="info-box-metabolismo red">
+                         <strong class="box-title">Importante Considerar:</strong>
+                         <p>El RER es una buena estimación, pero tiene limitaciones:</p>
+                         <ul>
+                             <li>Solo es válido durante ejercicio en <strong>estado estable</strong> (intensidad constante).</li>
+                             <li>No considera la contribución de las proteínas (suele ser pequeña).</li>
+                             <li>Durante ejercicio de <strong>muy alta intensidad</strong>, el RER puede superar 1.00. Esto se debe a la producción de CO₂ adicional por el tamponamiento del ácido láctico (iones H<sup>+</sup>) con bicarbonato, no directamente del metabolismo muscular. Un RER > 1.00 indica alta dependencia de glucólisis anaeróbica.</li>
+                         </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tools"></i>Aplicaciones Prácticas para el TDU</h2>
+                    <p>Entender el metabolismo de los combustibles es esencial para:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li><strong>Nutrición Deportiva:</strong> Aconsejar sobre ingesta de CHO y grasas según tipo, intensidad y duración del entreno/competición.</li>
+                        <li><strong>Estrategias de Entrenamiento:</strong> Diseñar sesiones para mejorar uso de grasas o optimizar uso de CHO.</li>
+                        <li><strong>Control de Peso:</strong> Comprender cómo diferentes intensidades afectan quema de grasas y gasto calórico.</li>
+                        <li><strong>Interpretación de la Fatiga:</strong> Relacionar agotamiento de glucógeno con "chocar con el muro".</li>
+                        <li><strong>Evaluación (con equipo):</strong> Interpretar datos de RER para evaluar eficiencia metabólica.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/7130473/pexels-photo-7130473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <div class="glossary-box-metabolismo">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Metabolismo (Parte 1)</h2>
+                        <dl>
+                            <dt>Metabolismo Energético</dt>
+                            <dd>Conjunto de reacciones químicas en las células para obtener y utilizar energía.</dd>
+                            <dt>Sustrato Energético</dt>
+                            <dd>Molécula (CHO, grasa, proteína) que se descompone para liberar energía y resintetizar ATP.</dd>
+                            <dt>Carbohidratos (CHO)</dt>
+                            <dd>Macronutriente (glucosa). Principal fuente de energía para alta intensidad.</dd>
+                            <dt>Glucógeno</dt>
+                            <dd>Forma de almacenamiento de glucosa en músculos e hígado.</dd>
+                            <dt>Glucosa</dt>
+                            <dd>Azúcar simple en sangre, utilizado por células.</dd>
+                            <dt>Grasas (Lípidos)</dt>
+                            <dd>Macronutriente con alta densidad energética. Principal fuente en reposo y baja intensidad/larga duración.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-12" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2680270/pexels-photo-2680270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <div class="glossary-box-metabolismo">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Metabolismo (Parte 2)</h2>
+                        <dl>
+                            <dt>Triglicéridos</dt>
+                            <dd>Forma principal de almacenamiento de grasa.</dd>
+                            <dt>Ácidos Grasos Libres (AGL)</dt>
+                            <dd>Forma en que las grasas son transportadas y utilizadas.</dd>
+                            <dt>Beta-Oxidación</dt>
+                            <dd>Proceso que descompone ácidos grasos para producir Acetil-CoA.</dd>
+                            <dt>Proteínas</dt>
+                            <dd>Macronutriente (aminoácidos). Principalmente estructural, no energético (excepto condiciones extremas).</dd>
+                            <dt>Cociente Respiratorio (RER)</dt>
+                            <dd>Relación VCO₂/VO₂. Indica mezcla de combustibles en metabolismo aeróbico.</dd>
+                            <dt>VO₂</dt><dd>Volumen de oxígeno consumido/min.</dd>
+                            <dt>VCO₂</dt><dd>Volumen de CO₂ producido/min.</dd>
+                            <dt>Crossover Concept</dt>
+                            <dd>Punto de intensidad donde CHO supera a grasas como fuente principal de ATP.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-metabolismo-13" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/669578/pexels-photo-669578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-leaf"></i>Conclusión: Elige Tu Combustible</h2>
+                    <div class="info-box-metabolismo green mt-6">
+                         <strong class="box-title"><i class="fas fa-gas-pump"></i> (¡O Deja que Tu Cuerpo lo Haga!)</strong>
+                         <p>Nuestro cuerpo es increíblemente eficiente seleccionando el combustible adecuado para cada situación. Entender esta selección, influenciada principalmente por la intensidad y duración del ejercicio, te permitirá tomar decisiones informadas sobre nutrición y entrenamiento para optimizar el rendimiento y la salud.</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-metabolismo" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-metabolismo" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-metabolismo" class="w-full sm:w-auto bg-askesis-metabolismo-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-metabolismo" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Metabolismo Energético!
+            </div>
+            <p class="mb-6">Ahora entiendes mejor cómo tu cuerpo utiliza los combustibles. ¡Sigue aprendiendo y aplicando!</p>
+            <button id="restart-button-metabolismo" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía de Metabolismo
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Metabolismo" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20de%20Metabolismo%20Energético." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterMetabolismo"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía de METABOLISMO ENERGÉTICO ***
+            const guideIdPrefix = 'metabolismo'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
