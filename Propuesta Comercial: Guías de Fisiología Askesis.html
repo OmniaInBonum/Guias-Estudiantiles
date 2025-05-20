@@ -79,7 +79,7 @@
         .page-section { padding: 4rem 1.5rem; }
         
         #hero-propuesta {
-            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center; /* Imagen de fondo relacionada con estudio/planificación */
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center; 
             background-size: cover;
             background-attachment: fixed; 
             color: var(--askesis-text-white);
@@ -298,10 +298,11 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="guia-card-promocional">
                         <div>
-                            <div class="guia-icon"><i class="fas fa-flag-checkered"></i></div> <h3 class="guia-title">Guía 0: Introducción a la Fisiología del Ejercicio</h3>
+                            <div class="guia-icon"><i class="fas fa-flag-checkered"></i></div>
+                            <h3 class="guia-title">Guía 0: Introducción a la Fisiología del Ejercicio</h3>
                             <p class="guia-description">Conceptos básicos, homeostasis, y la respuesta general del cuerpo al ejercicio. El punto de partida esencial.</p>
                         </div>
-                        <a href="#" class="guia-button">Ver Detalles (Próximamente)</a>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Introducci%C3%B3n%20a%20la%20Fisiolog%C3%ADa%20del%20Ejercicio.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
                     </div>
                     <div class="guia-card-promocional">
                         <div>
@@ -573,14 +574,13 @@
             function updateHeaderHeight() {
                 if (header) {
                     headerHeight = header.offsetHeight;
-                     // Actualizar scroll-margin-top para todas las secciones relevantes
                     const sectionsForScrollMargin = document.querySelectorAll('.scroll-mt-header');
                     sectionsForScrollMargin.forEach(section => {
                         section.style.scrollMarginTop = `${headerHeight}px`;
                     });
                 }
             }
-            updateHeaderHeight(); // Initial call
+            updateHeaderHeight(); 
             window.addEventListener('resize', updateHeaderHeight);
 
 
