@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guías de Estudio Avanzadas para Fisiología del Ejercicio</title>
+    <meta name="description" content="Potencia la enseñanza de Fisiología del Ejercicio en TDU ULagos con guías de estudio interactivas, personalizadas y basadas en ciencia, creadas por Askesis.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C',
+                        'askesis-green': '#008037',
+                        'askesis-orange': '#F58220',
+                        'askesis-dark': '#121212',
+                        'askesis-gray': '#1E1E1E',
+                        'askesis-light-gray': '#B3B3B3',
+                        'askesis-text-white': '#FFFFFF',
+                        'askesis-border': '#333333',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-green: #008037;
+            --askesis-orange: #F58220;
+            --askesis-dark: #121212;
+            --askesis-gray: #1E1E1E;
+            --askesis-light-gray: #B3B3B3;
+            --askesis-text-white: #FFFFFF;
+            --askesis-border: #333333;
+            --whatsapp-green: #25D366;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', 'sans-serif';
+            color: var(--askesis-light-gray);
+            background-color: var(--askesis-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: rgba(18, 18, 18, 0.85); 
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .nav-link {
+            color: var(--askesis-text-white);
+            padding: 0.5rem 1rem; margin: 0 0.25rem; border-radius: 0.25rem;
+            font-weight: 600; transition: color 0.3s ease; text-transform: uppercase; font-size: 0.8rem; 
+        }
+        .nav-link:hover, .nav-link.active { color: var(--askesis-orange); }
+        
+        .scroll-mt-header { /* Set by JS */ }
+        .page-section { padding: 4rem 1.5rem; }
+        
+        #hero-propuesta {
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center; /* Imagen de fondo relacionada con estudio/planificación */
+            background-size: cover;
+            background-attachment: fixed; 
+            color: var(--askesis-text-white);
+            min-height: 90vh; 
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center;
+            padding-top: 120px; padding-bottom: 3rem;
+        }
+        .content-wrapper { max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+        .section-title { 
+            font-family: 'Roboto', sans-serif; color: var(--askesis-text-white);
+            font-size: 2.5em; font-weight: 900; margin-bottom: 2.5rem; 
+            padding-bottom: 1rem; border-bottom: 3px solid var(--askesis-orange);
+            text-align: center; text-transform: uppercase; letter-spacing: 1px;
+        }
+        
+        #hero-propuesta .hero-title {
+            font-family: 'Roboto', sans-serif; font-size: 3.2rem; font-weight: 900;
+            color: var(--askesis-text-white); text-transform: uppercase;
+            margin-bottom: 1rem; line-height: 1.2; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        #hero-propuesta .hero-subtitle {
+            font-size: 1.25rem; color: var(--askesis-light-gray);
+            margin-bottom: 2rem; max-width: 750px; margin-left: auto; margin-right: auto;
+            font-weight: 400; 
+        }
+        .cta-button {
+            background-color: var(--askesis-orange); color: var(--askesis-dark) !important; 
+            padding: 0.9rem 2.2rem; border-radius: 0.375rem; font-weight: 700; 
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase; font-size: 1rem; display: inline-block;
+        }
+        .cta-button:hover { background-color: #d97019; transform: scale(1.05); }
+
+        .guia-card-promocional {
+            background-color: var(--askesis-gray);
+            border-radius: 0.5rem; 
+            padding: 1.5rem; 
+            text-align: left; 
+            transition: all 0.3s ease;
+            display: flex; flex-direction: column; justify-content: space-between;
+            border: 1px solid var(--askesis-border); 
+            height: 100%; 
+        }
+        .guia-card-promocional:hover { 
+             transform: translateY(-6px);
+             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+             border-color: var(--askesis-orange);
+        }
+        .guia-card-promocional .guia-icon {
+            font-size: 2.2rem; 
+            color: var(--askesis-orange); 
+            margin-bottom: 1rem;
+            text-align: center; 
+        }
+        .guia-card-promocional .guia-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2em; 
+            color: var(--askesis-text-white); 
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .guia-card-promocional .guia-description {
+            font-size: 0.85rem;
+            color: var(--askesis-light-gray);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .guia-card-promocional .guia-button { 
+            display: inline-block; 
+            color: var(--askesis-orange);
+            padding: 0.5rem 0; 
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            margin-top: 1rem;
+            text-align: center; 
+            border: 1px solid var(--askesis-orange);
+            border-radius: 0.25rem;
+        }
+         .guia-card-promocional .guia-button:hover {
+            background-color: var(--askesis-orange);
+            color: var(--askesis-dark); 
+        }
+
+        .feature-card-dark { 
+            background-color: var(--askesis-gray); padding: 1.75rem; 
+            border-radius: 10px; text-align: center; transition: all 0.3s ease;
+            border-top: 3px solid var(--askesis-green); 
+        }
+        .feature-card-dark:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0,128,55,0.3); }
+        .feature-card-dark .feature-icon { font-size: 2.8rem; color: var(--askesis-green); margin-bottom: 1rem; }
+        .feature-card-dark .feature-title { font-size: 1.25em; color: var(--askesis-text-white); font-family: 'Roboto', sans-serif; font-weight: 700; margin-bottom: 0.5rem;}
+        .feature-card-dark p { color: var(--askesis-light-gray); font-size: 0.9em; }
+
+        .process-step-card {
+            background-color: var(--askesis-gray); padding: 1.5rem;
+            border-left: 4px solid var(--askesis-orange); border-radius: 0 6px 6px 0;
+            margin-bottom: 1rem;
+        }
+        .process-step-card .step-number {
+            background-color: var(--askesis-orange); color: var(--askesis-dark);
+            border-radius: 50%; width: 35px; height: 35px; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;
+        }
+        .process-step-card .step-title { color: var(--askesis-text-white); font-size: 1.3em; font-weight: 700; margin-bottom: 0.5rem;}
+        .process-step-card p { font-size: 0.95em; }
+
+        .oferta-piloto-box {
+            background-color: var(--askesis-gray);
+            border: 2px dashed var(--askesis-green);
+            padding: 2rem; border-radius: 0.5rem; text-align: center;
+        }
+        .oferta-piloto-box .oferta-title { color: var(--askesis-green); font-size: 1.8em; font-weight: 700; margin-bottom: 0.75rem;}
+
+        footer {
+            background-color: #0A0A0A; color: var(--askesis-light-gray);
+            padding: 4rem 1rem 2rem; text-align: center;
+            border-top: 1px solid var(--askesis-border);
+        }
+        footer .footer-logo-link {
+            font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900;
+            color: var(--askesis-text-white); margin-bottom: 0.5rem; text-transform: uppercase;
+            text-decoration: none;
+        }
+        footer .footer-logo-link:hover { opacity: 0.9; }
+        footer .footer-tagline { font-size: 0.9rem; color: #888888; margin-bottom: 2rem;}
+        footer .social-links-footer a { color: var(--askesis-light-gray); transition: color 0.3s, transform 0.3s; margin: 0 0.75rem; display: inline-block; }
+        footer .social-links-footer a:hover { color: var(--askesis-orange); transform: scale(1.2); }
+        footer .social-links-footer i { font-size: 1.5rem; }
+        footer .copyright-footer { font-size: 0.875rem; color: #888888; margin-top: 2.5rem; border-top: 1px solid var(--askesis-border); padding-top: 1.5rem;}
+
+        .floating-btn-container { 
+            position: fixed; bottom: 20px; right: 20px; z-index: 100;
+            display: flex; flex-direction: column; gap: 10px; 
+        }
+        .floating-btn {
+            width: 50px; height: 50px; color: #FFF; border-radius: 50%; 
+            text-align: center; font-size: 1.5rem; box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; text-decoration: none; overflow: hidden; 
+        }
+        .floating-btn .btn-text {
+            display: none; margin-left: 0.5rem; font-size: 0.9rem;
+            font-weight: 600; white-space: nowrap; 
+        }
+        .floating-btn:hover {
+            width: auto; min-width: 50px; padding: 0 1rem; 
+            border-radius: 25px; transform: scale(1.05); 
+        }
+        .floating-btn:hover .btn-text { display: inline; }
+        .whatsapp-float { background-color: var(--whatsapp-green); }
+        .whatsapp-float:hover { background-color: #1ebe57; }
+
+        @media (max-width: 768px) {
+            #hero-propuesta { padding-top: 100px; padding-bottom: 2rem; min-height: auto; }
+            #hero-propuesta .hero-title { font-size: 2.5rem; }
+            #hero-propuesta .hero-subtitle { font-size: 1.1rem; max-width: 90%;}
+            .section-title { font-size: 2em; } 
+            .main-header .container { padding-left: 1rem; padding-right: 1rem; }
+        }
+    </style>
+</head>
+
+<body class="bg-askesis-dark">
+
+    <header class="main-header">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="text-3xl font-black text-askesis-text-white uppercase tracking-wider font-roboto">Askesis</a>
+            <nav class="hidden md:flex items-center">
+                <a href="#hero-propuesta" class="nav-link active">Inicio</a>
+                <a href="#nuestras-guias" class="nav-link">Guías Disponibles</a>
+                <a href="#beneficios-propuesta" class="nav-link">Beneficios</a>
+                <a href="#proceso-colaboracion" class="nav-link">Proceso</a>
+                <a href="#oferta-piloto" class="nav-link">Oferta Piloto</a>
+                <a href="#contacto-propuesta" class="nav-link">Contacto</a>
+            </nav>
+            <button id="mobile-menu-button-propuesta" class="md:hidden text-askesis-text-white focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+        <div id="mobile-menu-propuesta" class="hidden md:hidden bg-askesis-dark border-t border-askesis-border">
+            <a href="#hero-propuesta" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Inicio</a>
+            <a href="#nuestras-guias" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Guías</a>
+            <a href="#beneficios-propuesta" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Beneficios</a>
+            <a href="#proceso-colaboracion" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Proceso</a>
+            <a href="#oferta-piloto" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Oferta</a>
+            <a href="#contacto-propuesta" class="block text-askesis-text-white text-center py-3 hover:bg-askesis-gray nav-link-mobile-propuesta">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-propuesta" class="page-section scroll-mt-header">
+            <div class="content-wrapper px-4 flex flex-col items-center"> 
+                <h1 class="hero-title">Eleva Tu Docencia en Fisiología del Ejercicio</h1>
+                <p class="hero-subtitle">
+                    Guías de Estudio Interactivas y Personalizadas para TDU ULagos.
+                    Ahorra tiempo, potencia el aprendizaje de tus estudiantes y enriquece tu asignatura con material de vanguardia.
+                </p>
+                <a href="#oferta-piloto" class="cta-button">
+                    <i class="fas fa-bolt mr-2"></i>Descubre la Oferta Piloto
+                </a>
+            </div>
+        </section>
+
+        <section id="nuestras-guias" class="page-section scroll-mt-header bg-askesis-dark">
+            <div class="content-wrapper">
+                <h2 class="section-title"><i class="fas fa-book-reader mr-3"></i>Nuestras Guías Interactivas de Fisiología</h2>
+                <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-askesis-light-gray">
+                    Cada guía está diseñada para ser un recurso de estudio completo, interactivo y visualmente atractivo, facilitando la comprensión de los temas más complejos de la Fisiología del Ejercicio.
+                    A continuación, un vistazo a los módulos disponibles que podemos adaptar y personalizar para tu asignatura:
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-flag-checkered"></i></div> <h3 class="guia-title">Guía 0: Introducción a la Fisiología del Ejercicio</h3>
+                            <p class="guia-description">Conceptos básicos, homeostasis, y la respuesta general del cuerpo al ejercicio. El punto de partida esencial.</p>
+                        </div>
+                        <a href="#" class="guia-button">Ver Detalles (Próximamente)</a>
+                    </div>
+                    <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-coins"></i></div>
+                            <h3 class="guia-title">Guía 1: ATP - La Moneda Energética</h3>
+                            <p class="guia-description">Profundiza en la estructura, ciclo y rol crucial del ATP en la contracción muscular y el rendimiento deportivo.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/ATP%20la%20moneda%20energetica.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-cogs"></i></div>
+                            <h3 class="guia-title">Guía 2: Sistemas Energéticos</h3>
+                            <p class="guia-description">Explora las tres "fábricas" de ATP: fosfágenos, glucolítico y oxidativo, y su interacción durante el ejercicio.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Sistemas%20Energ%C3%A9ticos%20Askesis.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-fire-alt"></i></div>
+                            <h3 class="guia-title">Guía 3: Metabolismo Energético</h3>
+                            <p class="guia-description">Uso de sustratos (carbohidratos, grasas) en reposo y ejercicio, y el Cociente Respiratorio (RER).</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Metabolismo%20Energ%C3%A9tico%20Askesis.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-heartbeat"></i></div>
+                            <h3 class="guia-title">Guía 4: Sistema Cardiovascular y Ejercicio</h3>
+                            <p class="guia-description">Respuestas y adaptaciones del corazón y vasos sanguíneos al desafío del ejercicio físico.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Sistema%20Cardiovascular%20y%20Ejercicio.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-lungs"></i></div>
+                            <h3 class="guia-title">Guía 5: Sistema Respiratorio y Ejercicio</h3>
+                            <p class="guia-description">El intercambio vital de gases y cómo el sistema respiratorio se ajusta al ejercicio.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Sistema%20Respiratorio%20y%20Ejercicio.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-dumbbell"></i></div>
+                            <h3 class="guia-title">Guía 6: Estructura del Músculo Esquelético</h3>
+                            <p class="guia-description">La arquitectura del movimiento, desde el músculo completo hasta los miofilamentos.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Estructura%20del%20M%C3%BAsculo%20Esquel%C3%A9tico.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-brain"></i></div>
+                            <h3 class="guia-title">Guía 7: Control Neuromuscular</h3>
+                            <p class="guia-description">La conexión mente-músculo: unidad motora, unión neuromuscular y acoplamiento excitación-contracción.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Control%20Neuromuscular%20del%20Movimiento.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-broadcast-tower"></i></div>
+                            <h3 class="guia-title">Guía 8: Sistema Endocrino y Ejercicio</h3>
+                            <p class="guia-description">Los mensajeros químicos (hormonas) que regulan la respuesta del cuerpo al ejercicio.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Sistema%20Endocrino%20y%20Ejercicio.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-thermometer-half"></i></div>
+                            <h3 class="guia-title">Guía 9: Termorregulación y Ejercicio</h3>
+                            <p class="guia-description">Manteniendo la temperatura corporal bajo control durante el esfuerzo físico.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Termorregulaci%C3%B3n%20y%20Ejercicio.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-battery-empty"></i></div>
+                            <h3 class="guia-title">Guía 10: Fatiga Muscular y sus Causas</h3>
+                            <p class="guia-description">¿Por qué nos cansamos? Explorando los mecanismos de la fatiga central y periférica.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Fatiga%20Muscular%20y%20sus%20Causas.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-sync-alt"></i></div>
+                            <h3 class="guia-title">Guía 11: Adaptaciones al Entrenamiento</h3>
+                            <p class="guia-description">Cómo el cuerpo se vuelve más fuerte y resistente. Adaptaciones a la resistencia y la fuerza.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Adaptaciones%20al%20Entrenamiento.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <h3 class="guia-title">Guía 12: Evaluación Fisiológica</h3>
+                            <p class="guia-description">Midiendo las capacidades físicas: tests aeróbicos, de fuerza y composición corporal.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Evaluaci%C3%B3n%20Fisiol%C3%B3gica%20del%20Rendimiento.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-mountain"></i></div>
+                            <h3 class="guia-title">Guía 13: Ejercicio en Altitud</h3>
+                            <p class="guia-description">El desafío del aire "delgado": hipoxia, mal agudo de montaña y aclimatación.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Ejercicio%20en%20Altitud.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                     <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-child"></i><i class="fas fa-user-friends ml-1"></i></div>
+                            <h3 class="guia-title">Guía 14: Fisiología en Poblaciones Especiales</h3>
+                            <p class="guia-description">Ejercicio en niños, adolescentes y adultos mayores. Consideraciones y adaptaciones.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Fisiolog%C3%ADa%20en%20Poblaciones%20Especiales.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                    <div class="guia-card-promocional">
+                        <div>
+                            <div class="guia-icon"><i class="fas fa-rocket"></i></div>
+                            <h3 class="guia-title">Guía 15: Ayudas Ergogénicas</h3>
+                            <p class="guia-description">Sustancias y métodos para mejorar el rendimiento: evidencia, ética y seguridad.</p>
+                        </div>
+                        <a href="https://omniainbonum.github.io/Guias-Estudiantiles/Gu%C3%ADa%20Interactiva%20Ayudas%20Ergog%C3%A9nicas%20y%20Rendimiento.html" target="_blank" class="guia-button">Ver Guía de Muestra</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios-propuesta" class="page-section scroll-mt-header bg-askesis-gray">
+            <div class="content-wrapper">
+                <h2 class="section-title"><i class="fas fa-check-circle mr-3"></i>Beneficios Directos de Nuestra Colaboración</h2>
+                <div class="grid md:grid-cols-2 gap-8 mt-10">
+                    <div>
+                        <h3 class="text-2xl font-bold text-askesis-orange mb-4">Para Usted, Profesor/a:</h3>
+                        <div class="space-y-4">
+                            <div class="feature-card-dark">
+                                <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                                <h4 class="feature-title">Optimización de su Tiempo Valioso</h4>
+                                <p>Delegue la creación de material complementario y enfóquese en la interacción directa y la investigación.</p>
+                            </div>
+                            <div class="feature-card-dark">
+                                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                                <h4 class="feature-title">Recursos de Apoyo de Alto Impacto</h4>
+                                <p>Enriquezca su asignatura con guías interactivas, profesionales y alineadas con sus objetivos pedagógicos.</p>
+                            </div>
+                            <div class="feature-card-dark">
+                                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                                <h4 class="feature-title">Facilidad de Actualización y Personalización</h4>
+                                <p>Material digital fácil de revisar, adaptar y expandir según las necesidades cambiantes del currículo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-askesis-green mb-4">Para Sus Estudiantes de TDU:</h3>
+                         <div class="space-y-4">
+                            <div class="feature-card-dark !border-askesis-green">
+                                <div class="feature-icon !text-askesis-green"><i class="fas fa-book-reader"></i></div>
+                                <h4 class="feature-title">Mayor Claridad Conceptual</h4>
+                                <p>Guías diseñadas para facilitar la comprensión de temas complejos de fisiología a través de un formato interactivo y accesible.</p>
+                            </div>
+                            <div class="feature-card-dark !border-askesis-green">
+                                <div class="feature-icon !text-askesis-green"><i class="fas fa-search"></i></div>
+                                <h4 class="feature-title">Estudio Eficiente y Dirigido</h4>
+                                <p>Material organizado lógicamente para un repaso efectivo y una preparación óptima para las evaluaciones.</p>
+                            </div>
+                            <div class="feature-card-dark !border-askesis-green">
+                                <div class="feature-icon !text-askesis-green"><i class="fas fa-graduation-cap"></i></div>
+                                <h4 class="feature-title">Mejor Preparación Profesional</h4>
+                                <p>Refuerzo de conocimientos esenciales que serán la base de su futura carrera como Técnicos Deportivos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso-colaboracion" class="page-section scroll-mt-header bg-askesis-dark">
+            <div class="content-wrapper">
+                <h2 class="section-title"><i class="fas fa-handshake mr-3"></i>Nuestro Proceso de Colaboración: Simple y Efectivo</h2>
+                <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-askesis-light-gray">
+                    Trabajaremos de la mano para asegurar que las guías cumplan con sus expectativas y las necesidades de sus estudiantes.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="process-step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Definición de Contenidos</h3>
+                        <p>Usted nos proporciona el temario, apuntes clave, presentaciones o cualquier material base que desee incluir y destacar en las guías.</p>
+                    </div>
+                    <div class="process-step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Diseño y Desarrollo</h3>
+                        <p>Nuestro equipo estructura, redacta y diseña cada guía en un formato interactivo y atractivo, incorporando elementos visuales y pedagógicos.</p>
+                    </div>
+                    <div class="process-step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Revisión y Entrega Final</h3>
+                        <p>Le presentamos el borrador para su revisión y feedback. Realizamos los ajustes necesarios y entregamos el material final listo para usar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="oferta-piloto" class="page-section scroll-mt-header bg-askesis-gray">
+            <div class="content-wrapper text-center">
+                <h2 class="section-title"><i class="fas fa-tags mr-3"></i>Oferta Exclusiva: Programa Piloto TDU ULagos</h2>
+                <div class="oferta-piloto-box max-w-3xl mx-auto">
+                    <h3 class="oferta-title"><i class="fas fa-star"></i>¡Una Oportunidad Única para Innovar!</h3>
+                    <p class="text-xl text-askesis-text-white mb-4">
+                        Para iniciar esta valiosa colaboración con la Universidad de Los Lagos y su prestigiosa carrera de Técnico Deportivo Universitario, ofrecemos una <strong>tarifa especial de lanzamiento con un descuento del 40%</strong> en la creación de las primeras guías para su asignatura.
+                    </p>
+                    <p class="text-askesis-light-gray mb-6">
+                        Esta es una excelente oportunidad para obtener material didáctico interactivo de vanguardia a un costo significativamente reducido, a cambio de su retroalimentación para perfeccionar aún más nuestros recursos.
+                    </p>
+                    <p class="text-askesis-text-white font-semibold mb-6">¡Cupos limitados para esta oferta piloto!</p>
+                    <a href="#contacto-propuesta" class="cta-button bg-askesis-green hover:bg-green-700">
+                        <i class="fas fa-info-circle mr-2"></i>Más Información y Precios Detallados
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto-propuesta" class="page-section scroll-mt-header bg-askesis-dark">
+            <div class="content-wrapper text-center">
+                <h2 class="section-title"><i class="fas fa-paper-plane mr-3"></i>¿Listo/a Para Potenciar Su Asignatura?</h2>
+                <p class="text-lg max-w-2xl mx-auto mb-8 text-askesis-light-gray">
+                    Me encantaría conversar sobre cómo estas guías interactivas pueden adaptarse específicamente a su asignatura de Fisiología del Ejercicio en TDU y responder cualquier pregunta que tenga.
+                </p>
+                <p class="text-xl text-askesis-text-white font-semibold mb-6">
+                    Le propongo una breve reunión virtual (15-20 minutos) sin compromiso.
+                </p>
+                <div class="mt-8">
+                    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20estoy%20interesado/a%20en%20la%20propuesta%20de%20guías%20de%20Fisiología%20para%20TDU%20ULagos." target="_blank" class="cta-button">
+                        <i class="fab fa-whatsapp mr-2"></i>Agendar Reunión por WhatsApp
+                    </a>
+                    <p class="mt-6 text-askesis-light-gray">O envíeme un email a: <a href="mailto:luistdu111@gmail.com?subject=Propuesta%20Guías%20Fisiología%20TDU%20ULagos" class="font-semibold text-askesis-orange hover:underline">luistdu111@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-interactive">
+        <div class="content-wrapper">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-logo-link">Askesis</a>
+            <p class="footer-tagline">Soluciones Educativas Digitales para Ciencias del Deporte.</p>
+            <div class="coach-info-footer mb-6">
+                 <p class="text-lg font-semibold text-askesis-text-white">Luis Patricio Ruiz Ruiz</p>
+                 <p class="text-sm">Técnico Deportivo, Esp. Entrenamiento, Musculación y Prescripción de Ejercicio Físico.<br>Desarrollador de Contenido Educativo Digital.</p>
+            </div>
+            <div class="social-links-footer flex justify-center space-x-6 mb-8">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guías%20Fisiología" target="_blank" title="Enviar Email"><i class="fas fa-envelope"></i></a>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20las%20guías." target="_blank" title="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                 <a href="https://www.instagram.com/askesis111" target="_blank" title="Ver Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright-footer">© <span id="currentYearFooterPropuesta"></span> Askesis - Luis Ruiz. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="floating-btn-container">
+        <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20me%20interesa%20la%20oferta%20piloto%20de%20guías%20de%20estudio." class="floating-btn whatsapp-float" target="_blank" title="Consultar Oferta Piloto">
+            <i class="fab fa-whatsapp"></i> <span class="btn-text">Oferta Piloto</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSpan = document.getElementById('currentYearFooterPropuesta');
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            const header = document.querySelector('.main-header');
+            let headerHeight = header ? header.offsetHeight : 0;
+            
+            function updateHeaderHeight() {
+                if (header) {
+                    headerHeight = header.offsetHeight;
+                     // Actualizar scroll-margin-top para todas las secciones relevantes
+                    const sectionsForScrollMargin = document.querySelectorAll('.scroll-mt-header');
+                    sectionsForScrollMargin.forEach(section => {
+                        section.style.scrollMarginTop = `${headerHeight}px`;
+                    });
+                }
+            }
+            updateHeaderHeight(); // Initial call
+            window.addEventListener('resize', updateHeaderHeight);
+
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button-propuesta');
+            const mobileMenu = document.getElementById('mobile-menu-propuesta');
+            const mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
+
+            if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuIcon.classList.toggle('fa-bars');
+                    mobileMenuIcon.classList.toggle('fa-times');
+                });
+            }
+            
+            const allNavLinks = document.querySelectorAll('.main-header nav a.nav-link, #mobile-menu-propuesta a.nav-link-mobile-propuesta, .cta-button'); 
+
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = link.getAttribute('href');
+                    
+                    if (targetId && targetId.startsWith('#') && targetId.length > 1) { 
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+
+                        if (targetElement) {
+                            if (link.classList.contains('nav-link-mobile-propuesta') && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                                mobileMenu.classList.add('hidden');
+                                if (mobileMenuIcon) { 
+                                    mobileMenuIcon.classList.remove('fa-times');
+                                    mobileMenuIcon.classList.add('fa-bars');
+                                }
+                            }
+                            
+                            const currentHeaderHeight = header ? header.offsetHeight : 0; 
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - currentHeaderHeight;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    } else if (link.classList.contains('nav-link-mobile-propuesta') && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if (mobileMenuIcon) {
+                            mobileMenuIcon.classList.remove('fa-times');
+                            mobileMenuIcon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+            
+            const sections = document.querySelectorAll('main > section[id]');
+            const desktopNavLinks = document.querySelectorAll('.main-header nav a.nav-link'); 
+            const mobileNavLinksForActiveState = document.querySelectorAll('#mobile-menu-propuesta a.nav-link-mobile-propuesta');
+
+            function setActiveLink() {
+                let currentActiveId = sections.length > 0 ? sections[0].getAttribute('id') : ''; 
+                const currentHeaderHeight = header ? header.offsetHeight : 0;
+
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const section = sections[i];
+                    const sectionTop = section.offsetTop - currentHeaderHeight;
+                    
+                    if (window.scrollY >= sectionTop - (window.innerHeight * 0.3) ) { 
+                        currentActiveId = section.getAttribute('id');
+                        break; 
+                    }
+                }
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active', 'text-askesis-orange');
+                    if (link.getAttribute('href') === `#${currentActiveId}`) {
+                        link.classList.add('active', 'text-askesis-orange');
+                    }
+                });
+                mobileNavLinksForActiveState.forEach(link => {
+                    link.classList.remove('text-askesis-orange', 'font-bold'); 
+                     if (link.getAttribute('href') === `#${currentActiveId}`) {
+                        link.classList.add('text-askesis-orange', 'font-bold');
+                    }
+                });
+            }
+            
+            if (sections.length > 0) { 
+                setActiveLink();
+                window.addEventListener('scroll', setActiveLink);
+                window.addEventListener('resize', () => {
+                    updateHeaderHeight(); 
+                    setActiveLink();
+                }); 
+            }
+        });
+    </script>
+
+</body>
+</html>
