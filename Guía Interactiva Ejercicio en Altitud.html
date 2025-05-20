@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Ejercicio en Altitud</title>
+    <meta name="description" content="Guía interactiva sobre las respuestas fisiológicas y adaptaciones al ejercicio en altitud, hipoxia, mal agudo de montaña y aclimatación.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-altitud-blue': '#005A9C', // Azul principal para esta guía
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-altitude-color': '#17a2b8', // Cian/Azul claro para Altitud de la guía original
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-accent-altitude-light': '#e8f7fa', // Cian claro de la guía original
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-altitud-blue: #005A9C; /* Azul de la guía Altitud */
+            --askesis-green: #008037; 
+            --askesis-orange: #F58220; 
+            --askesis-purple: #6f42c1; 
+            --askesis-red: #dc3545; 
+            --askesis-altitude-color: #17a2b8; /* Cian/Azul claro para Altitud */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-accent-altitude-light: #e8f7fa; /* Cian claro */
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-altitud-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-altitud-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-altitud-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-altitud-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+
+        /* Cajas de información específicas de esta guía Altitud */
+        .slide-content-wrapper .intro-box-altitud {
+             border-left: 4px solid var(--askesis-altitud-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-altitud strong { color: var(--askesis-altitud-blue); }
+        
+        .slide-content-wrapper .key-concept-box {
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+        
+        .slide-content-wrapper .response-list-altitud ul { list-style: none; padding-left: 0; }
+        .slide-content-wrapper .response-list-altitud li {
+             border-bottom: 1px dashed var(--askesis-border-light); padding-bottom: 1rem; margin-bottom: 1rem;
+        }
+         .slide-content-wrapper .response-list-altitud li:last-child { border-bottom: none;}
+        .slide-content-wrapper .response-list-altitud strong.term-title { 
+             display: block;
+             color: var(--askesis-altitude-color); 
+             font-size: 1.15em; 
+             font-weight: 700;
+             font-family: 'Roboto', sans-serif;
+             margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .response-list-altitud i.term-icon { color: var(--askesis-altitude-color); margin-right: 8px;}
+
+
+        .slide-content-wrapper .info-box-altitud { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-altitud.blue { background-color: var(--askesis-accent-blue-light); border-left-color: var(--askesis-altitud-blue); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-altitud.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-altitud.red { background-color: var(--askesis-accent-red-light); border-left-color: var(--askesis-red); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-altitud.altitude { background-color: var(--askesis-accent-altitude-light); border-left-color: var(--askesis-altitude-color); color: var(--askesis-text-dark);}
+        
+        .slide-content-wrapper .info-box-altitud strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-altitud.blue strong.box-title { color: var(--askesis-altitud-blue); }
+        .slide-content-wrapper .info-box-altitud.green strong.box-title { color: var(--askesis-green); }
+        .slide-content-wrapper .info-box-altitud.red strong.box-title { color: var(--askesis-red); }
+        .slide-content-wrapper .info-box-altitud.altitude strong.box-title { color: var(--askesis-altitude-color); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-altitud-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-altitud { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-altitud .nav-link-altitud { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; 
+            margin: 0 0.05rem; 
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; 
+            white-space: nowrap;
+        }
+        #main-nav-altitud .nav-link-altitud:hover,
+        #main-nav-altitud .nav-link-altitud.active {
+            background-color: var(--askesis-altitud-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-altitud { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-altitud { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-altitude-color), var(--askesis-altitud-blue)); /* Cian a Azul */
+        }
+        #navigation-buttons-altitud button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-altitud button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-altitud-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-altitud-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-altitud {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-altitud-blue);
+        }
+        .slide-content-wrapper .glossary-box-altitud .guide-section-title { 
+             color: var(--askesis-altitud-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-altitud dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-altitud dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-altitud dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-altitud" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-altitud-0" class="nav-link-altitud">Intro 1</a></li>
+            <li><a href="#slide-altitud-1" class="nav-link-altitud">Intro 2</a></li>
+            <li><a href="#slide-altitud-2" class="nav-link-altitud">Hipoxia</a></li>
+            <li><a href="#slide-altitud-3" class="nav-link-altitud">Resp. Agudas 1</a></li>
+            <li><a href="#slide-altitud-4" class="nav-link-altitud">Resp. Agudas 2</a></li>
+            <li><a href="#slide-altitud-5" class="nav-link-altitud">MAM</a></li>
+            <li><a href="#slide-altitud-6" class="nav-link-altitud">Rendimiento</a></li>
+            <li><a href="#slide-altitud-7" class="nav-link-altitud">Aclimatación 1</a></li>
+            <li><a href="#slide-altitud-8" class="nav-link-altitud">Aclimatación 2</a></li>
+            <li><a href="#slide-altitud-9" class="nav-link-altitud">Estrategias</a></li>
+            <li><a href="#slide-altitud-10" class="nav-link-altitud">Aplicación TDU</a></li>
+            <li><a href="#slide-altitud-11" class="nav-link-altitud">Glosario 1</a></li>
+            <li><a href="#slide-altitud-12" class="nav-link-altitud">Glosario 2</a></li>
+            <li><a href="#slide-altitud-13" class="nav-link-altitud">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-altitud"> <div id="progress-bar-container-altitud" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-altitud" class="text-center mb-1 text-sm font-semibold text-askesis-altitud-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-altitud" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-altitud"> <section id="slide-altitud-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/163452/basketball-dunk-blue-game-163452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-mountain"></i>Ejercicio en Altitud</h1>
+                    <p class="guide-subtitle">El Desafío del Aire "Delgado"</p>
+                    <div class="intro-box-altitud">
+                        <p>Hemos analizado cómo el cuerpo responde al ejercicio en condiciones "normales" (a nivel del mar). Pero, ¿qué sucede cuando nos enfrentamos a un ambiente donde el oxígeno es más escaso, como en la montaña? El ejercicio en <strong>altitud</strong> presenta un desafío fisiológico único.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1188083/pexels-photo-1188083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-info-circle"></i>Continuación de la Introducción</h2>
+                     <div class="intro-box-altitud">
+                        <p>Entender cómo el cuerpo responde y se adapta a la altitud es crucial para los Técnicos Deportivos, especialmente en Chile, con la Cordillera de los Andes como un vasto campo de juego y entrenamiento.</p>
+                        <p>Esta guía explorará los efectos de la altitud en el rendimiento y la salud.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1287075/pexels-photo-1287075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-wind"></i><i class="fas fa-arrow-down" style="font-size: 0.6em; margin-left: -5px;"></i>El Aire "Delgado": Hipoxia Hipobárica</h2>
+                    <p>Contrario a lo que se piensa, la <strong>concentración</strong> de oxígeno (~20.93%) es la misma a nivel del mar que en altitud. Lo que cambia es la <strong>presión atmosférica total</strong>.</p>
+                    <ul class="list-disc list-inside space-y-1 mt-3">
+                        <li>A mayor altitud, menor presión atmosférica.</li>
+                        <li>Esto significa menor <strong>presión parcial de oxígeno (P<sub>O₂</sub>)</strong> en el aire inspirado.</li>
+                        <li>Menor P<sub>O₂</sub> alveolar → menor P<sub>O₂</sub> arterial → menor entrega de O₂ a tejidos.</li>
+                    </ul>
+                     <div class="key-concept-box mt-4">
+                        <strong>Hipoxia Hipobárica</strong>
+                        <p>Condición de baja disponibilidad de oxígeno en los tejidos debido a la baja presión barométrica en altitud. Es el principal desafío fisiológico.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3768593/pexels-photo-3768593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-tachometer-alt"></i>Respuestas Agudas a la Altitud (Parte 1)</h2>
+                    <p class="mb-3">Al ascender, el cuerpo compensa inmediatamente la menor disponibilidad de O₂:</p>
+                    <div class="response-list-altitud">
+                        <ul>
+                            <li>
+                                <strong class="term-title"><i class="fas fa-lungs-virus term-icon"></i>Hiperventilación</strong>
+                                <p>Aumento de frecuencia y profundidad respiratoria (↑ V<sub>E</sub>) para captar más O₂. Estimulada por quimiorreceptores periféricos (baja P<sub>O₂</sub> arterial).</p>
+                                <p><em>Consecuencia:</em> Puede llevar a <strong>alcalosis respiratoria</strong> (↑ pH sanguíneo) inicialmente por ↑ eliminación de CO₂.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <h2 class="guide-section-title"><i class="fas fa-heartbeat"></i>Respuestas Agudas a la Altitud (Parte 2)</h2>
+                    <div class="response-list-altitud">
+                        <ul>
+                            <li>
+                                <strong class="term-title"><i class="fas fa-heart-pulse term-icon"></i>Aumento de Frecuencia Cardíaca (FC)</strong>
+                                <p>En reposo y ejercicio submáximo, FC ↑ para compensar menor O₂ por litro de sangre y mantener entrega a tejidos.</p>
+                            </li>
+                             <li>
+                                <strong class="term-title"><i class="fas fa-tint term-icon"></i>Aumento del Gasto Cardíaco (GC)</strong>
+                                <p>Inicialmente, GC ↑ debido al ↑ FC (VS puede no cambiar o ↓ ligeramente).</p>
+                            </li>
+                            <li>
+                                <strong class="term-title"><i class="fas fa-stream term-icon"></i>Cambios en Fluidos Corporales</strong>
+                                <p>Ligera ↓ volumen plasmático inicial y ↑ diuresis (producción de orina).</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-head-side-cough"></i>Peligros de la Altitud</h2>
+                     <div class="info-box-altitud red">
+                         <strong class="box-title"><i class="fas fa-exclamation-triangle mr-2"></i>Mal Agudo de Montaña (MAM) o "Puna"</strong>
+                         <p>Respuesta común y potencialmente peligrosa a exposición rápida a altitud. Síntomas: dolor de cabeza, náuseas, fatiga, mareos, dificultad para dormir. Ocurren 6-48h post-ascenso.</p>
+                         <p>Causa compleja (hipoxia, cambios flujo sanguíneo cerebral). Mejor prevención: <strong>ascenso gradual</strong>.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-chart-line"></i><i class="fas fa-arrow-down" style="font-size: 0.6em; margin-left: -2px;"></i>Impacto en el Rendimiento Físico</h2>
+                    <p class="mb-3">La hipoxia afecta significativamente el rendimiento, especialmente aeróbico:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Disminución del VO₂máx:</strong> Efecto más notable. Por cada 1000m > ~1500m, VO₂máx ↓ ~8-11%. Limita ejercicio aeróbico intenso/prolongado.</li>
+                        <li><strong>Menor Rendimiento de Resistencia:</strong> Pruebas de resistencia perjudicadas.</li>
+                        <li><strong>Rendimiento Anaeróbico:</strong> Actividades cortas/explosivas (fosfágenos, glucólisis anaeróbica) menos afectadas. Menor densidad del aire puede beneficiar eventos de velocidad.</li>
+                        <li><strong>Mayor Dependencia de Glucólisis:</strong> A misma intensidad submáxima, cuerpo tiende a usar más carbohidratos.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-altitud-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1004665/pexels-photo-1004665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-seedling"></i>Adaptándose a las Alturas: Aclimatación (Parte 1)</h2>
+                    <p class="mb-3">Con permanencia en altitud (días/semanas), el cuerpo se aclimata para mejorar captación y transporte de O₂.</p>
+                    <h4 class="guide-subsubsection-title !text-askesis-altitude-color"><i class="fas fa-cogs"></i>Adaptaciones Clave (Días a Semanas):</h4>
+                    <div class="response-list-altitud">
+                        <ul>
+                            <li>
+                                <strong class="term-title"><i class="fas fa-lungs term-icon"></i>Ventilación Sostenida</strong>
+                                <p>Hiperventilación inicial se mantiene o aumenta ligeramente.</p>
+                            </li>
+                             <li>
+                                <strong class="term-title"><i class="fas fa-tint term-icon"></i>Aumento de Glóbulos Rojos y Hemoglobina</strong>
+                                <p>¡La más famosa! Riñones liberan <strong>Eritropoyetina (EPO)</strong> → médula ósea produce más glóbulos rojos → más hemoglobina para transportar O₂. Tarda semanas.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-sync-alt"></i>Adaptándose a las Alturas: Aclimatación (Parte 2)</h2>
+                    <h4 class="guide-subsubsection-title !text-askesis-altitude-color"><i class="fas fa-cogs"></i>Adaptaciones Clave (Continuación):</h4>
+                    <div class="response-list-altitud">
+                        <ul>
+                             <li>
+                                <strong class="term-title"><i class="fas fa-adjust term-icon"></i>Compensación Renal del pH</strong>
+                                <p>Riñones excretan más bicarbonato para compensar alcalosis respiratoria, normalizando pH sanguíneo.</p>
+                            </li>
+                            <li>
+                                <strong class="term-title"><i class="fas fa-sign-out-alt term-icon"></i>Otros Cambios</strong>
+                                <p>Ligera ↓ volumen plasmático (concentrando Hb), ↑ densidad capilar y mitocondrias musculares (más a largo plazo).</p>
+                            </li>
+                        </ul>
+                    </div>
+                     <div class="info-box-altitud altitude mt-4">
+                       <strong class="box-title"><i class="fas fa-clock"></i> ¿Cuánto Tiempo para Aclimatar?</strong>
+                       <p>Proceso gradual. Días para sentir mejora, semanas/meses para aclimatación significativa. Varía mucho entre individuos.</p>
+                   </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-map"></i>Estrategias para Entrenar y Competir en Altitud</h2>
+                    <p class="mb-3">Considerando los efectos fisiológicos, se usan diferentes estrategias:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Vivir Alto, Entrenar Alto (LHTH):</strong> Aclimatación completa, pero intensidad de entreno debe ↓.</li>
+                        <li><strong>Vivir Alto, Entrenar Bajo (LHTL):</strong> Óptima para muchos. Beneficios de aclimatación + entreno intenso a baja altitud. Logística compleja.</li>
+                        <li><strong>Exposición Intermitente a Hipoxia (IHE):</strong> Períodos cortos en ambientes hipóxicos simulados. Beneficios debatidos.</li>
+                        <li><strong>Competir Inmediatamente ("Fly In, Fly Out"):</strong> Para eventos cortos, llegar <24h antes para evitar MAM.</li>
+                        <li><strong>Aclimatación Prolongada in Situ:</strong> Llegar 2-3+ semanas antes para aclimatación significativa.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-altitud-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-user-tie"></i>Implicaciones para el TDU en Chile</h2>
+                    <p>Dado el entorno geográfico, es probable trabajar con personas en altitud:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li>Educar sobre riesgos (MAM, ascenso gradual).</li>
+                        <li>Ajustar Intensidad del Entrenamiento (↓ intensidad esperada, usar RPE/FC ajustada).</li>
+                        <li>Planificar Aclimatación si se compite en altitud.</li>
+                        <li>Énfasis en Hidratación y Nutrición (↑ pérdida agua respiratoria, posible ↑ necesidad CHO).</li>
+                        <li>Reconocer Síntomas de MAM u otros problemas.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-altitud-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/159579/crayons-coloring-book-coloring-book-cc0-159579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-altitud">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Ejercicio en Altitud (Pt. 1)</h2>
+                        <dl>
+                            <dt>Altitud</dt><dd>Elevación sobre el nivel del mar.</dd>
+                            <dt>Presión Barométrica</dt><dd>Presión del aire. Disminuye con altitud.</dd>
+                            <dt>Presión Parcial de O₂ (P<sub>O₂</sub>)</dt><dd>Presión del O₂ en aire. Disminuye con altitud.</dd>
+                            <dt>Hipoxia</dt><dd>Baja disponibilidad/utilización de O₂ en tejidos.</dd>
+                            <dt>Hipoxia Hipobárica</dt><dd>Hipoxia por baja presión barométrica.</dd>
+                            <dt>Hiperventilación</dt><dd>Aumento de ventilación pulmonar.</dd>
+                            <dt>Alcalosis Respiratoria</dt><dd>↑ pH sanguíneo por ↑ eliminación CO₂.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-altitud-12" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-altitud">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Ejercicio en Altitud (Pt. 2)</h2>
+                        <dl>
+                            <dt>Mal Agudo de Montaña (MAM)</dt><dd>Síntomas por exposición rápida a altitud.</dd>
+                            <dt>VO₂máx</dt><dd>Máximo consumo de oxígeno. Disminuye con altitud.</dd>
+                            <dt>Aclimatación a la Altitud</dt><dd>Adaptaciones fisiológicas a hipoxia.</dd>
+                            <dt>Eritropoyetina (EPO)</dt><dd>Hormona renal que estimula producción glóbulos rojos.</dd>
+                            <dt>Policitemia</dt><dd>Aumento de glóbulos rojos.</dd>
+                            <dt>LHTH</dt><dd>Vivir Alto, Entrenar Alto.</dd>
+                            <dt>LHTL</dt><dd>Vivir Alto, Entrenar Bajo.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="slide-altitud-13" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1287089/pexels-photo-1287089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-mountain"></i>Conclusión: Conquistando las Cumbres</h2>
+                    <div class="info-box-altitud altitude mt-6">
+                         <strong class="box-title"><i class="fas fa-graduation-cap"></i> Para Recordar</strong>
+                         <p>El ejercicio en altitud es un claro ejemplo de cómo el ambiente puede desafiar nuestra fisiología. La menor disponibilidad de oxígeno obliga al cuerpo a realizar ajustes inmediatos y adaptaciones a largo plazo.</p>
+                         <p class="font-semibold mt-3">Como Técnicos Deportivos, comprender estos procesos nos permite preparar mejor a nuestros deportistas para enfrentar estos desafíos de manera segura y efectiva.</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-altitud" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-altitud" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-altitud" class="w-full sm:w-auto bg-askesis-altitud-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-altitud" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Ejercicio en Altitud!
+            </div>
+            <p class="mb-6">Este conocimiento es vital para entrenar en diversos entornos. ¡Gran trabajo!</p>
+            <button id="restart-button-altitud" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía de Altitud
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Ejercicio%20Altitud" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20de%20Ejercicio%20en%20Altitud." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterAltitud"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía de EJERCICIO EN ALTITUD ***
+            const guideIdPrefix = 'altitud'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
