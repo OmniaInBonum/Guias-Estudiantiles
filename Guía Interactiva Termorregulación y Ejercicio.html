@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askesis: Guía Interactiva - Termorregulación y Ejercicio</title>
+    <meta name="description" content="Guía interactiva sobre la termorregulación durante el ejercicio, producción y pérdida de calor, respuestas al calor y frío, y la importancia de la hidratación.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'askesis-blue': '#005A9C', 
+                        'askesis-termo-blue': '#005A9C', // Azul de la guía Termo (ULagos/Corporativo)
+                        'askesis-green': '#008037', 
+                        'askesis-orange': '#F58220',
+                        'askesis-purple': '#6f42c1', 
+                        'askesis-red': '#dc3545', 
+                        'askesis-yellow': '#ffc107', // Amarillo para calor de la guía original
+                        'askesis-lightblue': '#0dcaf0', // Azul claro para frío de la guía original
+                        'askesis-text-dark': '#343a40', 
+                        'askesis-text-body': '#495057', 
+                        'askesis-text-light-header': '#FFFFFF',
+                        'askesis-bg-light': '#f8f9fa', 
+                        'askesis-bg-content-wrapper': 'rgba(255, 255, 255, 0.94)',
+                        'askesis-accent-blue-light': '#e7f3fe',
+                        'askesis-accent-green-light': '#e6f2e9',
+                        'askesis-accent-orange-light': '#fff3e0',
+                        'askesis-accent-purple-light': '#f1eafa', 
+                        'askesis-accent-red-light': '#f8d7da',
+                        'askesis-accent-yellow-light': '#fff9e6', // Amarillo claro de la guía original
+                        'askesis-accent-lightblue-light': '#e7fafa', // Azul claro de la guía original
+                        'askesis-border-light': '#dee2e6',
+                        'whatsapp-green': '#25D366',
+                    },
+                    fontFamily: {
+                        'lato': ['Lato', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --askesis-blue: #005A9C;
+            --askesis-termo-blue: #005A9C; /* Azul de la guía Termo */
+            --askesis-green: #008037; 
+            --askesis-orange: #F58220; /* Naranja de la guía Termo */
+            --askesis-purple: #6f42c1; 
+            --askesis-red: #dc3545; 
+            --askesis-yellow: #ffc107; /* Amarillo de la guía Termo */
+            --askesis-lightblue: #0dcaf0; /* Azul claro de la guía Termo */
+            --askesis-text-dark: #343a40;
+            --askesis-text-body: #495057;
+            --askesis-text-light-header: #FFFFFF;
+            --askesis-bg-light: #f8f9fa;
+            --askesis-bg-content-wrapper: rgba(255, 255, 255, 0.94);
+            --askesis-accent-blue-light: #e7f3fe;
+            --askesis-accent-green-light: #e6f2e9;
+            --askesis-accent-orange-light: #fff3e0;
+            --askesis-accent-purple-light: #f1eafa;
+            --askesis-accent-red-light: #f8d7da;
+            --askesis-accent-yellow-light: #fff9e6;
+            --askesis-accent-lightblue-light: #e7fafa;
+            --askesis-border-light: #dee2e6;
+            --whatsapp-green: #25D366;
+        }
+
+        html {
+            scroll-padding-top: 170px; 
+        }
+
+        body {
+            font-family: 'Lato', 'sans-serif';
+            color: var(--askesis-text-body);
+            background-color: var(--askesis-bg-light);
+            line-height: 1.7;
+        }
+
+        .step-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            padding: 3rem 1rem; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            animation: fadeInSlide 0.7s ease-in-out;
+            width: 100%; 
+        }
+
+        .step-slide::before { 
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.60); 
+            z-index: 1;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            z-index: 2;
+            background-color: var(--askesis-bg-content-wrapper);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            max-width: 900px; 
+            width: 95%; 
+            margin: 2rem auto; 
+            color: var(--askesis-text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.06);
+        }
+        
+        .slide-content-wrapper h1, .slide-content-wrapper h2, .slide-content-wrapper h3,
+        .slide-content-wrapper h4, .slide-content-wrapper h5,
+        .slide-content-wrapper p, .slide-content-wrapper ul, .slide-content-wrapper ol, .slide-content-wrapper li, .slide-content-wrapper dl {
+            color: var(--askesis-text-body); 
+            text-align: left; 
+        }
+        .slide-content-wrapper h1.guide-main-title, .slide-content-wrapper h2.guide-section-title {
+            text-align: center; 
+            color: var(--askesis-termo-blue); 
+        }
+        .slide-content-wrapper h1.guide-main-title i {
+            margin-right: 0.8rem; 
+            font-size: 0.9em; 
+        }
+         .slide-content-wrapper h2.guide-section-title i { margin-right: 0.75rem; font-size: 0.9em; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 1001; }
+        .sticky-nav-secondary { position: sticky; z-index: 1000; }
+
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-content-wrapper .guide-main-title {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 2.3em; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.75rem; 
+            border-bottom: 3px solid var(--askesis-termo-blue);
+            display: inline-block; 
+        }
+        .slide-content-wrapper .guide-subtitle { 
+            text-align: center; color: var(--askesis-text-body); font-size: 1.2em; margin-top: -0.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+        .slide-content-wrapper .guide-section-title { /* Para H2 */
+            font-family: 'Roboto', sans-serif;
+            color: var(--askesis-termo-blue); 
+            font-size: 1.9em; 
+            margin-top: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            padding-bottom: 0.6rem; 
+            border-bottom: 2px solid var(--askesis-termo-blue);
+        }
+        .slide-content-wrapper .guide-subsection-title { /* Para H3 */
+             font-family: 'Roboto', sans-serif;
+             color: var(--askesis-purple); 
+             font-size: 1.5em; 
+             font-weight: 700;
+             margin-top: 1.5rem; 
+             margin-bottom: 0.75rem; 
+             padding-left: 10px;
+             border-left: 4px solid var(--askesis-purple);
+        }
+         .slide-content-wrapper .guide-subsubsection-title { /* Para H4 */
+             font-family: 'Lato', sans-serif; 
+             color: var(--askesis-text-dark); 
+             font-size: 1.3em; 
+             font-weight: 700;
+             margin-top: 1.25rem; 
+             margin-bottom: 0.6rem;
+        }
+         .slide-content-wrapper .guide-subsubsection-title i { margin-right: 8px; color: var(--askesis-green); }
+
+        .slide-content-wrapper .highlight {
+             color: var(--askesis-orange);
+             font-weight: 700;
+        }
+        .slide-content-wrapper ul, .slide-content-wrapper ol {
+            list-style-position: outside;
+            padding-left: 1.75rem; 
+            margin-bottom: 1rem;
+        }
+        .slide-content-wrapper ul ul, .slide-content-wrapper ol ol { 
+            margin-top: 0.25rem;
+            margin-left: 1.25rem;
+        }
+        .slide-content-wrapper li {
+            margin-bottom: 0.75rem; 
+        }
+        .slide-content-wrapper strong { color: var(--askesis-text-dark); font-weight: 700;}
+        .slide-content-wrapper code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; color: #495057; border: 1px solid #ced4da; }
+        .slide-content-wrapper .formula { 
+            font-family: 'Times New Roman', Times, serif; font-style: italic; font-weight: bold; color: var(--askesis-purple); background-color: var(--askesis-accent-purple-light); padding: 5px 10px; border-radius: 4px; display: inline-block; margin: 5px 0;
+        }
+
+        /* Cajas de información específicas de esta guía Termorregulación */
+        .slide-content-wrapper .intro-box-termo {
+             border-left: 4px solid var(--askesis-termo-blue);
+             padding: 15px 20px;
+             background-color: var(--askesis-accent-blue-light);
+             border-radius: 0 5px 5px 0;
+             margin-bottom: 1.5rem; 
+        }
+        .slide-content-wrapper .intro-box-termo strong { color: var(--askesis-termo-blue); }
+        
+        .slide-content-wrapper .key-concept-box {
+            background-color: var(--askesis-accent-purple-light); 
+            border-left: 4px solid var(--askesis-purple); 
+            padding: 15px 20px; margin: 1.25rem 0; 
+            border-radius: 0 4px 4px 0;
+        }
+        .slide-content-wrapper .key-concept-box strong { color: var(--askesis-purple); display: block; margin-bottom: 5px; }
+        
+        .slide-content-wrapper .heat-mechanisms-list { 
+            list-style: none; padding-left: 0;
+        }
+        .slide-content-wrapper .heat-mechanisms-list li {
+            border: 1px solid var(--askesis-border-light);
+            border-left: 5px solid var(--askesis-orange);
+            padding: 15px;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            background-color: var(--askesis-bg-content-wrapper);
+        }
+        .slide-content-wrapper .heat-mechanisms-list strong.mechanism-title { /* Título del mecanismo */
+             color: var(--askesis-orange); 
+             display: block; 
+             margin-bottom: 0.5rem; 
+             font-size: 1.15em;
+             font-weight: 700;
+             font-family: 'Roboto', sans-serif;
+        }
+        .slide-content-wrapper .heat-mechanisms-list i { color: var(--askesis-orange); margin-right: 8px;}
+
+
+        .slide-content-wrapper .info-box-termo { 
+            border-left-width: 4px; border-left-style: solid; padding: 1rem; margin: 1.25rem 0; border-radius: 0 0.25rem 0.25rem 0; font-size: 0.95em;
+        }
+        .slide-content-wrapper .info-box-termo.blue { background-color: var(--askesis-accent-blue-light); border-left-color: var(--askesis-termo-blue); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-termo.green { background-color: var(--askesis-accent-green-light); border-left-color: var(--askesis-green); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-termo.orange { background-color: var(--askesis-accent-orange-light); border-left-color: var(--askesis-orange); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-termo.red { background-color: var(--askesis-accent-red-light); border-left-color: var(--askesis-red); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-termo.yellow { background-color: var(--askesis-accent-yellow-light); border-left-color: var(--askesis-yellow); color: var(--askesis-text-dark);}
+        .slide-content-wrapper .info-box-termo.lightblue { background-color: var(--askesis-accent-lightblue-light); border-left-color: var(--askesis-lightblue); color: var(--askesis-text-dark);}
+        
+        .slide-content-wrapper .info-box-termo strong.box-title { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 1.1em; 
+            display: block; 
+            margin-bottom: 0.5rem;
+        }
+        .slide-content-wrapper .info-box-termo.blue strong.box-title { color: var(--askesis-termo-blue); }
+        .slide-content-wrapper .info-box-termo.green strong.box-title { color: var(--askesis-green); }
+        .slide-content-wrapper .info-box-termo.orange strong.box-title { color: var(--askesis-orange); }
+        .slide-content-wrapper .info-box-termo.red strong.box-title { color: var(--askesis-red); }
+        .slide-content-wrapper .info-box-termo.yellow strong.box-title { color: var(--askesis-yellow); }
+        .slide-content-wrapper .info-box-termo.lightblue strong.box-title { color: var(--askesis-lightblue); }
+
+
+        .askesis-main-header { 
+            background-color: var(--askesis-termo-blue); 
+            color: var(--askesis-text-light-header);
+            text-align: center;
+            padding: 0.75rem 0; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .askesis-main-header .brand-title-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+            color: var(--askesis-text-light-header); 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .askesis-main-header .brand-title-link:hover {
+            opacity: 0.9; 
+        }
+        .askesis-main-header .brand-tagline { 
+            font-size: 0.9em; 
+            color: #e0e0e0; 
+            margin-top: 2px; 
+            font-weight: 400; 
+        }
+        #main-nav-termo { /* ID específico para esta guía */
+             background-color: var(--askesis-text-dark); 
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #main-nav-termo .nav-link-termo { /* Clase específica */
+            color: #e0e0e0; 
+            padding: 0.6rem 0.40rem; 
+            margin: 0 0.05rem; 
+            border-radius: 0.25rem;
+            font-weight: 500; 
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.65rem; 
+            white-space: nowrap;
+        }
+        #main-nav-termo .nav-link-termo:hover,
+        #main-nav-termo .nav-link-termo.active {
+            background-color: var(--askesis-termo-blue); 
+            color: var(--askesis-text-light-header);
+        }
+        #progress-bar-container-termo { /* ID específico */
+            padding: 0.5rem 1rem;
+            background-color: #e9ecef; 
+        }
+        #progress-bar-termo { /* ID específico */
+            background: linear-gradient(to right, var(--askesis-orange), var(--askesis-termo-blue)); /* Naranja a Azul */
+        }
+        #navigation-buttons-termo button { /* ID específico */
+            transition: all 0.3s ease;
+        }
+        #navigation-buttons-termo button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-interactive {
+            background-color: var(--askesis-text-dark);
+            color: #adb5bd; 
+            padding: 2.5rem 1rem 1.5rem; 
+            text-align: center;
+        }
+        .footer-interactive .footer-brand-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700; 
+            color: var(--askesis-termo-blue); 
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+         .footer-interactive .footer-brand-link:hover {
+            opacity: 0.9;
+        }
+        .footer-interactive .footer-tagline { 
+            font-size: 0.9em;
+            color: #ced4da; 
+            margin-bottom: 1.5rem;
+        }
+        .footer-interactive .creator-info { 
+            font-style: italic;
+            color: #adb5bd;
+            margin-bottom: 0.5rem;
+        }
+        .footer-interactive .creator-info strong { color: var(--askesis-text-light-header); }
+
+        .footer-interactive .contact-links a {
+            color: #ced4da;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .footer-interactive .contact-links a:hover {
+            color: var(--askesis-termo-blue);
+        }
+        .footer-interactive .contact-links i {
+            margin-right: 0.3rem;
+        }
+        .footer-interactive .copyright {
+            font-size: 0.85em;
+            color: #6c757d; 
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057; 
+        }
+
+        .floating-whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1005; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .slide-content-wrapper .glossary-box-termo {
+            margin-top: 2rem;
+            padding: 25px;
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            border-top: 3px solid var(--askesis-termo-blue);
+        }
+        .slide-content-wrapper .glossary-box-termo .guide-section-title { 
+             color: var(--askesis-termo-blue); 
+             border-bottom: none; 
+             text-align: center; 
+             margin-bottom: 1.5rem;
+             font-size: 1.6em; 
+        }
+        .slide-content-wrapper .glossary-box-termo dl { margin: 0; padding: 0; }
+        .slide-content-wrapper .glossary-box-termo dt { 
+            font-weight: bold; 
+            color: var(--askesis-text-dark); 
+            font-size: 1.05em; 
+            margin-top: 0.75rem; 
+        }
+        .slide-content-wrapper .glossary-box-termo dd { 
+            margin-left: 0; 
+            padding-left: 15px; 
+            margin-bottom: 0.5rem; 
+            border-left: 2px solid #ccc; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            font-size: 0.95em;
+        }
+
+    </style>
+</head>
+
+<body class="bg-askesis-bg-light">
+
+    <header class="askesis-main-header sticky-nav">
+        <div class="container mx-auto">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="brand-title-link">ASKESIS</a>
+            <div class="brand-tagline">Fisiología del Ejercicio - TDU (Universidad de Los Lagos)</div>
+        </div>
+    </header>
+
+    <nav id="main-nav-termo" class="sticky-nav-secondary"> <ul class="container mx-auto flex flex-wrap justify-center p-1">
+            <li><a href="#slide-termo-0" class="nav-link-termo">Intro 1</a></li>
+            <li><a href="#slide-termo-1" class="nav-link-termo">Intro 2</a></li>
+            <li><a href="#slide-termo-2" class="nav-link-termo">Homeostasis</a></li>
+            <li><a href="#slide-termo-3" class="nav-link-termo">Producción Calor</a></li>
+            <li><a href="#slide-termo-4" class="nav-link-termo">Pérdida Calor 1</a></li>
+            <li><a href="#slide-termo-5" class="nav-link-termo">Pérdida Calor 2</a></li>
+            <li><a href="#slide-termo-6" class="nav-link-termo">Ejercicio Calor</a></li>
+            <li><a href="#slide-termo-7" class="nav-link-termo">Ejercicio Frío</a></li>
+            <li><a href="#slide-termo-8" class="nav-link-termo">Aclimatación</a></li>
+            <li><a href="#slide-termo-9" class="nav-link-termo">Aplicación TDU</a></li>
+            <li><a href="#slide-termo-10" class="nav-link-termo">Glosario 1</a></li>
+            <li><a href="#slide-termo-11" class="nav-link-termo">Glosario 2</a></li>
+            <li><a href="#slide-termo-12" class="nav-link-termo">Final</a></li>
+        </ul>
+    </nav>
+    
+    <div id="interactive-presentation-container-termo"> <div id="progress-bar-container-termo" class="w-full sticky-nav-secondary" style="z-index: 999;"> <div id="step-indicator-termo" class="text-center mb-1 text-sm font-semibold text-askesis-termo-blue"></div> <div class="w-11/12 mx-auto bg-gray-300 rounded-full h-2.5">
+                <div id="progress-bar-termo" class="h-2.5 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div> </div>
+        </div>
+
+        <div id="slides-container-termo"> <section id="slide-termo-0" class="step-slide" style="background-image: url('https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h1 class="guide-main-title text-center"><i class="fas fa-thermometer-half"></i>Termorregulación y Ejercicio</h1>
+                    <p class="guide-subtitle">Manteniendo la Temperatura Corporal Bajo Control</p>
+                    <div class="intro-box-termo">
+                        <p>Hemos visto cómo los músculos producen fuerza y cómo los sistemas de soporte (energético, cardiovascular, respiratorio) trabajan para mantener esa actividad. Sin embargo, hay un subproducto inevitable de todo este trabajo metabólico: ¡el <strong>calor</strong>!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-1" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-147413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-info-circle"></i>Continuación de la Introducción</h2>
+                     <div class="intro-box-termo">
+                        <p>Nuestro cuerpo es como un motor, y como todo motor, genera calor al funcionar. Si este calor se acumula excesivamente, puede afectar negativamente el rendimiento e incluso poner en riesgo la salud.</p>
+                        <p>Esta guía explora la <strong>termorregulación</strong>: los mecanismos que utiliza nuestro cuerpo para mantener su temperatura central dentro de un rango estrecho y seguro (alrededor de 37°C), especialmente durante el desafío que representa el ejercicio.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-2" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3601094/pexels-photo-3601094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-balance-scale-left"></i>El Termostato Interno: Homeostasis Térmica</h2>
+                    <p>Los humanos somos <strong>homeotermos</strong>, mantenemos una temperatura corporal interna relativamente constante.</p>
+                    <div class="key-concept-box mt-3">
+                        <strong>Temperatura Central (Core Temperature)</strong>
+                        <p>Temperatura de los órganos internos profundos. Variable crítica a regular (~37°C).</p>
+                    </div>
+                     <div class="key-concept-box">
+                        <strong>Termorregulación</strong>
+                        <p>Procesos fisiológicos para mantener la homeostasis térmica, equilibrando producción y pérdida de calor.</p>
+                    </div>
+                    <p class="mt-3">El centro de control principal es el <strong>hipotálamo</strong> (cerebro), que actúa como un termostato.</p>
+                </div>
+            </section>
+
+            <section id="slide-termo-3" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-fire"></i>¿De Dónde Viene el Calor? Producción en Ejercicio</h2>
+                    <p>La principal fuente de calor durante el ejercicio es la <strong>ineficiencia metabólica</strong>.</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li><strong>Contracción Muscular:</strong> Solo ~20-25% de la energía del ATP se convierte en trabajo mecánico. El resto (~75-80%) se disipa como <strong>calor</strong>.</li>
+                        <li><strong>Metabolismo Basal:</strong> Procesos metabólicos en reposo también generan calor.</li>
+                    </ul>
+                    <p class="mt-3">Durante el ejercicio intenso, la tasa metabólica puede aumentar 15-20 veces, generando una <strong>producción de calor masiva</strong>.</p>
+                     <div class="info-box-termo orange mt-4">
+                         <strong class="box-title"><i class="fas fa-burn"></i> ¡Somos Ineficientes!</strong>
+                         <p>Gran parte de la energía química se transforma en calor durante la contracción muscular, similar a una ampolleta incandescente.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-4" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1112080/pexels-photo-1112080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-wind"></i><i class="fas fa-tint-slash" style="margin-left: -5px;"></i>Mecanismos de Pérdida de Calor (Parte 1)</h2>
+                    <p class="mb-3">El cuerpo utiliza cuatro mecanismos principales para transferir calor al ambiente:</p>
+                    <ul class="heat-mechanisms-list">
+                        <li>
+                            <strong class="mechanism-title"><i class="fas fa-radiation"></i>Radiación</strong>
+                            <p>Transferencia por ondas infrarrojas entre objetos sin contacto directo. Importante en reposo y ambientes frescos.</p>
+                        </li>
+                         <li>
+                            <strong class="mechanism-title"><i class="fas fa-hands-helping"></i>Conducción</strong>
+                            <p>Transferencia por contacto directo. Mínima en aire, significativa con superficies frías/calientes.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-termo-5" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/325044/pexels-photo-325044.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-wind"></i><i class="fas fa-tint"></i>Mecanismos de Pérdida de Calor (Parte 2)</h2>
+                    <ul class="heat-mechanisms-list">
+                         <li>
+                            <strong class="mechanism-title"><i class="fas fa-wind"></i>Convección</strong>
+                            <p>Transferencia por movimiento de fluido (aire/agua) sobre el cuerpo. El viento o agua fría aumentan la pérdida.</p>
+                        </li>
+                         <li>
+                            <strong class="mechanism-title"><i class="fas fa-tint"></i>Evaporación</strong>
+                            <p>¡El mecanismo <strong>más importante</strong> durante el ejercicio, especialmente en calor! Conversión de sudor en vapor, tomando calor del cuerpo.</p>
+                            <p class="mt-2"><strong>Factores Clave para Evaporación:</strong> Gradiente de presión de vapor (aire seco mejor), superficie cutánea expuesta, movimiento del aire.</p>
+                        </li>
+                    </ul>
+                     <div class="info-box-termo red mt-4">
+                         <strong class="box-title"><i class="fas fa-cloud-sun-rain"></i> Humedad: El Gran Enemigo del Enfriamiento</strong>
+                         <p>En días cálidos Y húmedos, la evaporación del sudor es ineficaz. El sudor gotea sin enfriar, aumentando riesgo de golpe de calor.</p>
+                     </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-6" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3768913/pexels-photo-3768913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-temperature-high"></i>Ejercicio en Ambientes Calurosos</h2>
+                    <p class="mb-3">Impone un doble desafío: satisfacer demandas metabólicas Y disipar calor.</p>
+                    <h4 class="guide-subsubsection-title !text-askesis-orange"><i class="fas fa-cogs"></i>Respuestas Fisiológicas Clave:</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Aumento de la Sudoración.</li>
+                        <li>Aumento del Flujo Sanguíneo Cutáneo (vasodilatación).</li>
+                        <li>Disminución del Flujo Sanguíneo Muscular (competencia por GC).</li>
+                        <li>Aumento de la Frecuencia Cardíaca (deriva cardiovascular).</li>
+                        <li>Riesgo de Deshidratación.</li>
+                    </ul>
+                    <div class="info-box-termo yellow mt-4">
+                         <strong class="box-title"><i class="fas fa-water"></i> Hidratación: ¡No Negociable!</strong>
+                         <p>La deshidratación reduce volumen plasmático, dificulta sudoración, aumenta temperatura central y disminuye rendimiento cardiovascular. Mantenerse hidratado es crucial.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-7" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/760663/pexels-photo-760663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-snowflake"></i>Ejercicio en Ambientes Fríos</h2>
+                    <p class="mb-3">El objetivo principal es <strong>conservar calor</strong>.</p>
+                    <h4 class="guide-subsubsection-title !text-askesis-lightblue"><i class="fas fa-cogs"></i>Respuestas Fisiológicas Clave:</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Vasoconstricción Periférica (reduce flujo a piel/extremidades).</li>
+                        <li>Escalofríos (Tiritar): Contracciones musculares involuntarias para generar calor.</li>
+                        <li>Aumento del Metabolismo (Termogénesis sin tiritar).</li>
+                        <li>Riesgo de Hipotermia.</li>
+                        <li>Función Muscular Afectada por frío extremo.</li>
+                        <li>Deshidratación (por respiración de aire frío/seco y menor sensación de sed).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-termo-8" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-sync-alt"></i>Acostumbrándose: Aclimatación</h2>
+                    <p class="mb-3">Con exposición repetida, el cuerpo desarrolla adaptaciones.</p>
+                    <h4 class="guide-subsubsection-title !text-askesis-yellow"><i class="fas fa-sun"></i>Aclimatación al Calor (~7-14 días):</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Aumento volumen plasmático, inicio más temprano y mayor tasa de sudoración, sudor más diluido, menor ↑FC y Temp. central, mejor tolerancia subjetiva.</li>
+                    </ul>
+                    <h4 class="guide-subsubsection-title !text-askesis-lightblue mt-4"><i class="fas fa-icicles"></i>Aclimatación al Frío (Más lenta):</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Mejora capacidad de mantener temperatura de piel/extremidades, posible ↑termogénesis sin tiritar, mejor comodidad subjetiva.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-termo-9" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title"><i class="fas fa-user-check"></i>Implicaciones Prácticas para el TDU</h2>
+                    <p>El conocimiento de la termorregulación es vital para:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-3">
+                        <li>Planificar Entrenamientos Seguros (ajustar a condiciones ambientales).</li>
+                        <li>Promover la Hidratación Adecuada.</li>
+                        <li>Recomendar Vestimenta Apropiada.</li>
+                        <li>Reconocer Signos de Estrés Térmico (golpe de calor, hipotermia).</li>
+                        <li>Considerar la Aclimatación.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="slide-termo-10" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/159579/crayons-coloring-book-coloring-book-cc0-159579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-termo">
+                        <h2 class="guide-section-title"><i class="fas fa-book"></i>Glosario: Termorregulación (Pt. 1)</h2>
+                        <dl>
+                            <dt>Termorregulación</dt><dd>Procesos para mantener temperatura corporal estable.</dd>
+                            <dt>Homeotermo</dt><dd>Organismo que mantiene temperatura constante.</dd>
+                            <dt>Temperatura Central</dt><dd>Temperatura de órganos internos (~37°C).</dd>
+                            <dt>Hipotálamo</dt><dd>Centro de control termorregulador en cerebro.</dd>
+                            <dt>Hipertermia</dt><dd>Elevación peligrosa de temperatura corporal.</dd>
+                            <dt>Hipotermia</dt><dd>Descenso peligroso de temperatura corporal.</dd>
+                            <dt>Radiación</dt><dd>Transferencia de calor por ondas infrarrojas.</dd>
+                            <dt>Conducción</dt><dd>Transferencia de calor por contacto directo.</dd>
+                            <dt>Convección</dt><dd>Transferencia de calor por movimiento de fluido.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-termo-11" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                     <div class="glossary-box-termo">
+                        <h2 class="guide-section-title"><i class="fas fa-book-open"></i>Glosario: Termorregulación (Pt. 2)</h2>
+                        <dl>
+                            <dt>Evaporación</dt><dd>Pérdida de calor por conversión de sudor a vapor.</dd>
+                            <dt>Sudoración</dt><dd>Producción de sudor.</dd>
+                            <dt>Humedad Relativa</dt><dd>Cantidad de vapor de agua en el aire.</dd>
+                            <dt>Vasodilatación Cutánea</dt><dd>Ensanchamiento de vasos sanguíneos de la piel.</dd>
+                            <dt>Vasoconstricción Periférica</dt><dd>Estrechamiento de vasos en piel/extremidades.</dd>
+                            <dt>Deriva Cardiovascular</dt><dd>Aumento gradual de FC en ejercicio prolongado/calor.</dd>
+                            <dt>Deshidratación</dt><dd>Pérdida excesiva de agua corporal.</dd>
+                            <dt>Electrolitos</dt><dd>Minerales perdidos en sudor (Na, K, Cl).</dd>
+                            <dt>Aclimatación</dt><dd>Adaptaciones fisiológicas a estrés térmico.</dd>
+                            <dt>Golpe de Calor</dt><dd>Emergencia médica por sobrecalentamiento extremo.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="slide-termo-12" class="step-slide hidden" style="background-image: url('https://images.pexels.com/photos/1153370/pexels-photo-1153370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="slide-content-wrapper">
+                    <h2 class="guide-section-title !text-askesis-green !border-askesis-green"><i class="fas fa-temperature-three-quarters"></i>Conclusión: Manteniendo la Calma (o el Calor)</h2>
+                    <div class="info-box-termo green mt-6">
+                         <strong class="box-title"><i class="fas fa-graduation-cap"></i> Para Recordar</strong>
+                         <p>La capacidad de regular nuestra temperatura es asombrosa y esencial para la supervivencia y el rendimiento. Como Técnicos Deportivos, entender cómo el cuerpo produce y pierde calor, y cómo responde a diferentes ambientes, es fundamental para garantizar que el ejercicio sea siempre una actividad segura y beneficiosa.</p>
+                     </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="navigation-buttons-termo" class="mt-8 mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 px-4"> <button id="prev-button-termo" class="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i>Anterior
+            </button>
+            <button id="next-button-termo" class="w-full sm:w-auto bg-askesis-termo-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md flex items-center justify-center"> Siguiente<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+        <div id="completion-container-termo" class="hidden my-8 text-center px-4"> <div class="text-xl font-semibold text-askesis-green p-6 bg-askesis-accent-green-light rounded-lg shadow mb-6">
+                ¡Has completado la Guía Interactiva sobre Termorregulación y Ejercicio!
+            </div>
+            <p class="mb-6">Este conocimiento es crucial para la seguridad y el rendimiento. ¡Bien hecho!</p>
+            <button id="restart-button-termo" class="bg-askesis-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300"> <i class="fas fa-redo mr-2"></i>Reiniciar Guía de Termorregulación
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20quisiera%20pedir%20informaci%C3%B3n%20sobre%20sus%20asesor%C3%ADas." target="_blank" class="floating-whatsapp-button" title="Contactar por WhatsApp para Asesorías">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer-interactive">
+        <div class="container mx-auto max-w-4xl px-4">
+            <a href="https://omniainbonum.github.io/web-test/test%20web.html" target="_blank" class="footer-brand-link">ASKESIS</a>
+            <div class="creator-info mt-2">Guía de Estudio creada por <strong>Luis Patricio Ruiz Ruiz</strong></div>
+            <p class="footer-tagline">Adaptada para Fisiología del Ejercicio TDU - Universidad de Los Lagos</p>
+            
+            <div class="contact-links flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 mt-3">
+                 <a href="mailto:luistdu111@gmail.com?subject=Consulta%20Guia%20Termorregulación" target="_blank" title="Enviar Email" class="flex items-center"><i class="fas fa-envelope mr-2"></i> luistdu111@gmail.com</a>
+                 <span class="hidden sm:inline text-gray-500">|</span>
+                 <a href="https://wa.me/56975401150?text=Hola%20Askesis%2C%20tengo%20una%20consulta%20sobre%20la%20guía%20de%20Termorregulación." target="_blank" title="Contactar por WhatsApp" class="flex items-center"><i class="fab fa-whatsapp mr-2"></i> +56 9 7540 1150</a>
+            </div>
+            <p class="copyright">© <span id="currentYearFooterTermo"></span> Askesis. Todos los derechos reservados.</p> </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // *** Configuración específica para la guía de TERMORREGULACIÓN ***
+            const guideIdPrefix = 'termo'; 
+            // *****************************************************************
+
+            const guideContainerId = `interactive-presentation-container-${guideIdPrefix}`;
+            const guideContainer = document.getElementById(guideContainerId);
+            if (!guideContainer) {
+                console.error(`Error: Contenedor principal de la guía con ID '${guideContainerId}' no encontrado.`);
+                return;
+            }
+
+            const slides = Array.from(guideContainer.querySelectorAll(`#slides-container-${guideIdPrefix} .step-slide`));
+            const prevButton = guideContainer.querySelector(`#prev-button-${guideIdPrefix}`);
+            const nextButton = guideContainer.querySelector(`#next-button-${guideIdPrefix}`);
+            const stepIndicator = guideContainer.querySelector(`#step-indicator-${guideIdPrefix}`);
+            const progressBar = guideContainer.querySelector(`#progress-bar-${guideIdPrefix}`);
+            const progressBarContainer = guideContainer.querySelector(`#progress-bar-container-${guideIdPrefix}`);
+            const navigationButtonsContainer = guideContainer.querySelector(`#navigation-buttons-${guideIdPrefix}`);
+            const completionContainer = guideContainer.querySelector(`#completion-container-${guideIdPrefix}`);
+            const restartButton = guideContainer.querySelector(`#restart-button-${guideIdPrefix}`);
+            const yearSpan = document.getElementById(`currentYearFooter${guideIdPrefix.charAt(0).toUpperCase() + guideIdPrefix.slice(1)}`);
+            const navLinks = Array.from(document.querySelectorAll(`#main-nav-${guideIdPrefix} .nav-link-${guideIdPrefix}`));
+            const mainNav = document.getElementById(`main-nav-${guideIdPrefix}`);
+            const header = document.querySelector('.askesis-main-header');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            function getStickyHeaderHeight() {
+                let totalHeight = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    totalHeight += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') {
+                    totalHeight += mainNav.offsetHeight;
+                }
+                if (progressBarContainer && getComputedStyle(progressBarContainer).position === 'sticky') {
+                     totalHeight += progressBarContainer.offsetHeight;
+                }
+                return totalHeight;
+            }
+            
+            function updateProgressBarContainerStickyTop() {
+                let topOffset = 0;
+                if (header && getComputedStyle(header).position === 'sticky') {
+                    topOffset += header.offsetHeight;
+                }
+                if (mainNav && getComputedStyle(mainNav).position === 'sticky') { 
+                    topOffset += mainNav.offsetHeight;
+                }
+                if (progressBarContainer) {
+                    progressBarContainer.style.top = `${topOffset}px`;
+                }
+
+                if (mainNav && header && getComputedStyle(header).position === 'sticky') {
+                    mainNav.style.top = `${header.offsetHeight}px`;
+                } else if (mainNav) {
+                    mainNav.style.top = '0px';
+                }
+            }
+
+            function updateSlideDisplay(scrollToSlide = true) {
+                if (!slides.length || !stepIndicator || !progressBar || !prevButton || !nextButton || !navigationButtonsContainer || !completionContainer || !mainNav || !progressBarContainer) {
+                    return;
+                }
+                
+                updateProgressBarContainerStickyTop(); 
+
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentSlide);
+                });
+                
+                stepIndicator.textContent = `Paso ${currentSlide + 1} de ${totalSlides}`;
+                const progressPercentage = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                prevButton.disabled = currentSlide === 0;
+                
+                nextButton.classList.toggle('hidden', currentSlide === totalSlides - 1);
+                completionContainer.classList.toggle('hidden', currentSlide !== totalSlides - 1);
+                
+                navigationButtonsContainer.classList.remove('sm:justify-start', 'sm:justify-between', 'sm:justify-center', 'sm:justify-end');
+                if (currentSlide === totalSlides - 1) {
+                    navigationButtonsContainer.classList.add('sm:justify-start');
+                } else if (currentSlide === 0) {
+                    navigationButtonsContainer.classList.add('sm:justify-end');
+                } else {
+                    navigationButtonsContainer.classList.add('sm:justify-between');
+                }
+                
+                if (scrollToSlide) {
+                    const targetSlideElement = slides[currentSlide];
+                    if (targetSlideElement) {
+                        const targetRect = targetSlideElement.getBoundingClientRect();
+                        const scrollPosition = window.pageYOffset + targetRect.top - getStickyHeaderHeight() - 20; 
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${slides[currentSlide].id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlideDisplay();
+                    }
+                });
+            }
+
+            if (restartButton) {
+                restartButton.addEventListener('click', () => {
+                    currentSlide = 0;
+                    updateSlideDisplay();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSlideIndex = slides.findIndex(s => `#${s.id}` === targetId);
+
+                    if (targetSlideIndex !== -1) {
+                        currentSlide = targetSlideIndex;
+                        updateSlideDisplay(); 
+                    }
+                });
+            });
+            
+            window.addEventListener('load', () => {
+                updateProgressBarContainerStickyTop();
+                 if (totalSlides > 0) {
+                    updateSlideDisplay(false);
+                } else {
+                    console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+                }
+            });
+            window.addEventListener('resize', () => {
+                updateProgressBarContainerStickyTop();
+            });
+
+            if (totalSlides > 0) {
+                updateSlideDisplay(false); 
+            } else {
+                console.warn(`Advertencia: No se encontraron slides en la guía '${guideIdPrefix}'.`);
+            }
+        });
+    </script>
+
+</body>
+</html>
